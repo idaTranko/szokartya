@@ -140,6 +140,7 @@
             this.mbtnSzotarTorles.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mbtnSzotarTorles.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.mbtnSzotarTorles.Depth = 0;
+            this.mbtnSzotarTorles.Enabled = false;
             this.mbtnSzotarTorles.HighEmphasis = true;
             this.mbtnSzotarTorles.Icon = null;
             this.mbtnSzotarTorles.Location = new System.Drawing.Point(529, 432);
@@ -155,6 +156,7 @@
             this.mbtnSzotarTorles.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.mbtnSzotarTorles.UseAccentColor = false;
             this.mbtnSzotarTorles.UseVisualStyleBackColor = true;
+            this.mbtnSzotarTorles.Click += new System.EventHandler(this.mbtnSzotarTorles_Click);
             // 
             // mbtnSzotarMentes
             // 
@@ -176,6 +178,7 @@
             this.mbtnSzotarMentes.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.mbtnSzotarMentes.UseAccentColor = false;
             this.mbtnSzotarMentes.UseVisualStyleBackColor = true;
+            this.mbtnSzotarMentes.Click += new System.EventHandler(this.mbtnSzotarMentes_Click);
             // 
             // mtbSzotarSuly
             // 
@@ -183,6 +186,7 @@
             this.mtbSzotarSuly.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mtbSzotarSuly.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.mtbSzotarSuly.Depth = 0;
+            this.mtbSzotarSuly.Enabled = false;
             this.mtbSzotarSuly.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.mtbSzotarSuly.HideSelection = true;
             this.mtbSzotarSuly.Hint = "Súly";
@@ -203,10 +207,10 @@
             this.mtbSzotarSuly.Size = new System.Drawing.Size(474, 48);
             this.mtbSzotarSuly.TabIndex = 3;
             this.mtbSzotarSuly.TabStop = false;
-            this.mtbSzotarSuly.Text = "50";
             this.mtbSzotarSuly.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mtbSzotarSuly.TrailingIcon = null;
             this.mtbSzotarSuly.UseSystemPasswordChar = false;
+            this.mtbSzotarSuly.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtbSzotarSuly_KeyPress);
             // 
             // mtbSzotarIdegennyelv
             // 
@@ -214,6 +218,7 @@
             this.mtbSzotarIdegennyelv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mtbSzotarIdegennyelv.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.mtbSzotarIdegennyelv.Depth = 0;
+            this.mtbSzotarIdegennyelv.Enabled = false;
             this.mtbSzotarIdegennyelv.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.mtbSzotarIdegennyelv.HideSelection = true;
             this.mtbSzotarIdegennyelv.Hint = "Idegennyelv";
@@ -244,6 +249,7 @@
             this.mtbSzotarAnyanyelv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.mtbSzotarAnyanyelv.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.mtbSzotarAnyanyelv.Depth = 0;
+            this.mtbSzotarAnyanyelv.Enabled = false;
             this.mtbSzotarAnyanyelv.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.mtbSzotarAnyanyelv.HideSelection = true;
             this.mtbSzotarAnyanyelv.Hint = "Anyanyelv";
@@ -285,12 +291,14 @@
             this.mlvSzotar.MinimumSize = new System.Drawing.Size(150, 81);
             this.mlvSzotar.MouseLocation = new System.Drawing.Point(-1, -1);
             this.mlvSzotar.MouseState = MaterialSkin.MouseState.OUT;
+            this.mlvSzotar.MultiSelect = false;
             this.mlvSzotar.Name = "mlvSzotar";
             this.mlvSzotar.OwnerDraw = true;
             this.mlvSzotar.Size = new System.Drawing.Size(694, 398);
             this.mlvSzotar.TabIndex = 0;
             this.mlvSzotar.UseCompatibleStateImageBehavior = false;
             this.mlvSzotar.View = System.Windows.Forms.View.Details;
+            this.mlvSzotar.ItemActivate += new System.EventHandler(this.mlvSzotar_ItemActivate);
             // 
             // chAnyanyelv
             // 
@@ -343,6 +351,7 @@
             this.mbtnSzotarFrissites.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.mbtnSzotarFrissites.UseAccentColor = false;
             this.mbtnSzotarFrissites.UseVisualStyleBackColor = true;
+            this.mbtnSzotarFrissites.Click += new System.EventHandler(this.mbtnSzotarFrissites_Click);
             // 
             // mbtnSzotarDatasource
             // 
