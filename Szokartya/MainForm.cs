@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using CsvHelper;
 
 namespace Szokartya
 {
@@ -18,6 +19,7 @@ namespace Szokartya
     {
         private readonly MaterialSkinManager materialSkinManager;
         //private Collection<Szotar> szotar = new Collection<Szotar>();
+        private string szotarDatasource = string.Empty;
         private List<SzotarRekord> szotar = new List<SzotarRekord>();
 
         public MainForm()
