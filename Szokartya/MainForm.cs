@@ -21,11 +21,13 @@ namespace Szokartya
     public partial class MainForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-        //private Collection<Szotar> szotar = new Collection<Szotar>();
         private string szotarDatasource = string.Empty;
         private List<SzotarRekord> szotar = new List<SzotarRekord>();
         private CsvConfiguration csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
         private int szotarSelectedItemIndex = -1;
+        private readonly int SULY_MIN = 0;
+        private readonly int SULY_MAX = 10;
+        private int szotanulasMaradek = 0;
 
         public MainForm()
         {
@@ -67,6 +69,11 @@ namespace Szokartya
             //
             //
             //
+
+            // ezt atirni. akkorra amikor betoljuk a maximalis elemeket
+            //tbarSzotanulasSzoismeretIsmeretlen.Maximum = tbarKivalasztottSzavakSzama.Value - tbarSzotanulasSzoismeretIsmeretlen.Value;
+            //tbarSzotanulasSzoismeretBizonytalan.Maximum = tbarKivalasztottSzavakSzama.Value - tbarSzotanulasSzoismeretBizonytalan.Value;
+            //tbarSzotanulasSzoismeretIsmert.Maximum = tbarKivalasztottSzavakSzama.Value - tbarSzotanulasSzoismeretIsmert.Value;
 
 
             //
@@ -134,12 +141,18 @@ namespace Szokartya
                 SetConfig("szotarDatasource", ofdSzotarDatasource.FileName);
                 szotarDatasource = ofdSzotarDatasource.FileName;
             }
+            mlvSzotar.Items.Clear();
+            mbtnSzotarUjSzopar.Enabled = false;
+            mbtnSzotarMentes.Enabled = false;
+            ClearSzotarInputFields();
+            EnableSzotarInputFields(false);
         }
 
         private void mbtnSzotarFrissites_Click(object sender, EventArgs e)
         {
             ReadSzotarCsv();
             FillSzotarListview();
+            mbtnSzotarUjSzopar.Enabled = true;
         }
 
         private void ReadSzotarCsv()
@@ -154,11 +167,6 @@ namespace Szokartya
 
         private void WriteSzotarCsv()
         {
-            //SzotarRekord rekord = new SzotarRekord();
-            //rekord.Anyanyelv = "eger";
-            //rekord.Idegennyelv = "mouse";
-            //szotar.Add(rekord);
-
             using (var writer = new StreamWriter(szotarDatasource))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
@@ -185,6 +193,7 @@ namespace Szokartya
         private void FillSzotarListview()
         {
             mlvSzotar.Items.Clear();
+            szotar.Reverse();
             foreach (SzotarRekord item in szotar)
             {
                 var row = new ListViewItem(new[] {
@@ -194,6 +203,7 @@ namespace Szokartya
                 });
                 mlvSzotar.Items.Add(row);
             }
+            mlSzotarSzoparokDarabszama.Text = "Szópárok darabszáma: " + szotar.Count;
         }
 
         private void SetLastColumnWidthSzotar()
@@ -221,7 +231,66 @@ namespace Szokartya
 
         private void mbtnSzotarMentes_Click(object sender, EventArgs e)
         {
-            WriteSzotarCsv();
+            if (ValidateSzotarInputFields())
+            {
+                SzotarRekord rekord = new SzotarRekord();
+                rekord.Anyanyelv = mtbSzotarAnyanyelv.Text;
+                rekord.Idegennyelv = mtbSzotarIdegennyelv.Text;
+                rekord.Suly = Convert.ToInt32(mtbSzotarSuly.Text);
+                if (szotarSelectedItemIndex == szotar.Count)
+                {
+                    szotar.Add(rekord);
+                }
+                else
+                {
+                    szotar[szotarSelectedItemIndex] = rekord;
+                    Console.WriteLine();
+                }
+                WriteSzotarCsv();
+                FillSzotarListview();
+            }
+        }
+
+        private bool ValidateSzotarInputFields()
+        {
+            int suly = 0;
+
+            if (String.IsNullOrWhiteSpace(mtbSzotarAnyanyelv.Text))
+            {
+                ShowSnackbar("Az anyanyelv input nem lehet üres!");
+                return false;
+            }
+            if (String.IsNullOrWhiteSpace(mtbSzotarIdegennyelv.Text))
+            {
+                ShowSnackbar("Az idegennyelv input nem lehet üres!");
+                return false;
+            }
+            if (String.IsNullOrWhiteSpace(mtbSzotarSuly.Text))
+            {
+                ShowSnackbar("Az súly input nem lehet üres!");
+                return false;
+            }
+            if (!int.TryParse(mtbSzotarSuly.Text, out suly))
+            {
+                ShowSnackbar("Az súly értéknek " + SULY_MIN + " és " + SULY_MAX + " között kell lennie!");
+                return false;
+            }
+            else
+            {
+                if (suly < SULY_MIN || suly > SULY_MAX)
+                {
+                    ShowSnackbar("Az súly értéknek " + SULY_MIN + " és " + SULY_MAX + " között kell lennie!");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private void ShowSnackbar(String message)
+        {
+            MaterialSnackBar SnackBarMessage = new MaterialSnackBar(message, 5000, "OK", false);
+            SnackBarMessage.Show(this);
         }
 
         private void mlvSzotar_ItemActivate(object sender, EventArgs e)
@@ -232,6 +301,7 @@ namespace Szokartya
             mtbSzotarIdegennyelv.Text = szotar[szotarSelectedItemIndex].Idegennyelv;
             mtbSzotarSuly.Text = Convert.ToString(szotar[szotarSelectedItemIndex].Suly);
             mbtnSzotarTorles.Enabled = true;
+            mbtnSzotarMentes.Enabled = true;
         }
 
         private void mbtnSzotarTorles_Click(object sender, EventArgs e)
@@ -245,6 +315,76 @@ namespace Szokartya
             WriteSzotarCsv();
             FillSzotarListview();
             mbtnSzotarTorles.Enabled = false;
+            mbtnSzotarMentes.Enabled = false;
+        }
+
+        private void mbtnSzotarUjSzopar_Click(object sender, EventArgs e)
+        {
+            ClearSzotarInputFields();
+            EnableSzotarInputFields(true);
+            mbtnSzotarMentes.Enabled = true;
+            szotarSelectedItemIndex = szotar.Count;
+        }
+
+        private void tbarKivalasztottSzavakSzama_Scroll(object sender, EventArgs e)
+        {
+            mlSzotanulasKivalasztottSzavakSzamaValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
+            tbarSzotanulasSzoismeretIsmeretlen.Maximum = tbarKivalasztottSzavakSzama.Value;
+            tbarSzotanulasSzoismeretBizonytalan.Maximum = tbarKivalasztottSzavakSzama.Value;
+            tbarSzotanulasSzoismeretIsmert.Maximum = tbarKivalasztottSzavakSzama.Value;
+            tbarSzotanulasSzoismeretIsmeretlen.Value = 0;
+            tbarSzotanulasSzoismeretBizonytalan.Value = 0;
+            tbarSzotanulasSzoismeretIsmert.Value = 0;
+        }
+
+        private void materialComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (materialComboBox1.SelectedIndex == 0)
+            {
+                tbarSzotanulasSzoismeretIsmeretlen.Maximum = 0;
+                tbarSzotanulasSzoismeretBizonytalan.Maximum = 0;
+                tbarSzotanulasSzoismeretIsmert.Maximum = 0;
+                tbarSzotanulasSzoismeretIsmeretlen.Value = 0;
+                tbarSzotanulasSzoismeretBizonytalan.Value = 0;
+                tbarSzotanulasSzoismeretIsmert.Value = 0;
+            }
+        }
+
+        private void tbarSzotanulasSzoismeretIsmeretlen_Scroll(object sender, EventArgs e)
+        {
+            // Onmagabol nem kell levonnia, hanem a masik ketto osszeget kell levonni a tbarKivalasztottSzavakSzama-bol
+            //tbarSzotanulasSzoismeretIsmeretlen.Maximum = tbarKivalasztottSzavakSzama.Value - tbarSzotanulasSzoismeretIsmeretlen.Value;
+            mlSzotanulasSzoismeretIsmeretlenValue.Text = Convert.ToString(tbarSzotanulasSzoismeretIsmeretlen.Value);
+            mlSzotanulasSzoismeretIsmeretlenMaxValue.Text = Convert.ToString(tbarSzotanulasSzoismeretIsmeretlen.Maximum);
+        }
+
+        private void tbarSzotanulasSzoismeretBizonytalan_Scroll(object sender, EventArgs e)
+        {
+            //tbarSzotanulasSzoismeretBizonytalan.Maximum = tbarKivalasztottSzavakSzama.Value - tbarSzotanulasSzoismeretBizonytalan.Value;
+        }
+
+        private void tbarSzotanulasSzoismeretIsmert_Scroll(object sender, EventArgs e)
+        {
+            //tbarSzotanulasSzoismeretIsmert.Maximum = tbarKivalasztottSzavakSzama.Value - tbarSzotanulasSzoismeretIsmert.Value;
         }
     }
 }
+
+
+/*
+ * 
+    
+    // egyik
+    List<int> szotarKivalasztottIndexek = List<int>();
+    mlSzotanulasSzo.Text = szotar[szotarKivalasztottIndexek[i]].Idegennyelv;
+    szotar[szotarKivalasztottIndexek[i]].IncrementSuly(-1)
+
+
+    // masik
+    szotar<SzotarRekord> . Suly
+    int kivalasztottSzavakDarabszama = 20; // List<int> aminek 20 eleme van
+    2,3,3,3,3,3,3,3,5,5,5,5,5,5,5,
+    2,67,4,78,9,4,3,
+
+ * 
+ * */

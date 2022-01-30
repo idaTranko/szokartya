@@ -17,5 +17,10 @@ namespace Szokartya
         
         [Index(2)]
         public int Suly { get; set; } = 5;
+
+        public void IncrementSuly(int incrementWith)
+        {
+            Suly = Suly + incrementWith;
+        }
     }
 }
