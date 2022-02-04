@@ -79,15 +79,6 @@ namespace Szokartya
             //
             // DEBUG
             //
-            SzotarRekord item = new SzotarRekord();
-            item.Anyanyelv = "Kutya";
-            item.Idegennyelv = "Dog";
-            item.Suly = 5;
-
-            szotar.Add(item);
-
-
-
             //
             //
             //
@@ -366,6 +357,61 @@ namespace Szokartya
         private void tbarSzotanulasSzoismeretIsmert_Scroll(object sender, EventArgs e)
         {
             //tbarSzotanulasSzoismeretIsmert.Maximum = tbarKivalasztottSzavakSzama.Value - tbarSzotanulasSzoismeretIsmert.Value;
+        }
+
+        private void materialCard5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void materialButton4_Click(object sender, EventArgs e)
+        {
+            //string header = @"
+            //  <html>
+            //    <meta http-equiv=""X-UA-Compatible"" content=""IE=edge"" />
+            //      <head>
+            //      <style>
+            //        body {
+            //          background-color: rgb(65, 65, 65);
+            //          color: white;
+            //        }
+            //        h2 {
+            //            /* margin-left: 20px; */
+            //        }
+            //        p {
+            //            /* margin-left: 40px; */
+            //        }
+            //        </style>
+            //        </head>
+            //    <body>";
+
+            //string footer = "</body></html>";
+            //wbSegitseg.DocumentText = "<htm><h1>Ez a szovet</h1> </html>";
+            //string text = System.IO.File.ReadAllText(@"README.md");
+            //string fullHtml = string.Concat(header, mdHtml, footer);
+            //System.IO.File.WriteAllText(@"C:\Users\trank\source\repos\szokartya\Szokartya\README.html", fullHtml);
+            //System.IO.File.WriteAllText(@"C:\Users\trank\source\repos\szokartya\Szokartya\README.html", mdHtml);
+
+            string text = System.IO.File.ReadAllText(@"C:\Users\trank\source\repos\szokartya\Szokartya\README.md");
+            string mdHtml = Markdig.Markdown.ToHtml(text);
+            wbSegitseg.DocumentText = mdHtml;
+
+        }
+
+        private void pbHivatkozasokBBC_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.bbc.com/");
+        }
+
+        private void mtcMenu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.Text = mtcMenu.SelectedTab.Text;
+        }
+
+        private void materialButton3_Click(object sender, EventArgs e)
+        {
+            pbSzotanulasSpellcheck.Image = Szokartya.Properties.Resources.checkmarkx1;
+            pbSzotanulasSpellcheck.Invalidate();
         }
     }
 }

@@ -51,9 +51,26 @@
             this.mbtnSzotarDatasource = new MaterialSkin.Controls.MaterialButton();
             this.mtbSzotarDatasource = new MaterialSkin.Controls.MaterialTextBox2();
             this.tpSzotanulas = new System.Windows.Forms.TabPage();
+            this.materialButton3 = new MaterialSkin.Controls.MaterialButton();
+            this.materialFloatingActionButton2 = new MaterialSkin.Controls.MaterialFloatingActionButton();
+            this.materialFloatingActionButton1 = new MaterialSkin.Controls.MaterialFloatingActionButton();
+            this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            this.szokartyaMinositoPozitivBtn = new MaterialSkin.Controls.MaterialButton();
+            this.szokartyaMinositoNullBtn = new MaterialSkin.Controls.MaterialButton();
+            this.szokartyaMinositoNegativBtn = new MaterialSkin.Controls.MaterialButton();
+            this.materialCard5 = new MaterialSkin.Controls.MaterialCard();
             this.tpHivatkozasok = new System.Windows.Forms.TabPage();
+            this.mcHivatkozasok = new MaterialSkin.Controls.MaterialCard();
+            this.mlHivatkozasokBBC = new MaterialSkin.Controls.MaterialLabel();
             this.tpBeallitasok = new System.Windows.Forms.TabPage();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.mlSzotanulasSzoismeretIsmeretlenMaxValue = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.mlSzotanulasKivalasztottSzavakSzamaValue = new MaterialSkin.Controls.MaterialLabel();
             this.mlSzotanulasKivalasztottSzavakSzama = new MaterialSkin.Controls.MaterialLabel();
             this.tbarKivalasztottSzavakSzama = new System.Windows.Forms.TrackBar();
@@ -71,21 +88,32 @@
             this.mlBeallitasokAlkalmazas = new MaterialSkin.Controls.MaterialLabel();
             this.mswSotetTema = new MaterialSkin.Controls.MaterialSwitch();
             this.tpSegitseg = new System.Windows.Forms.TabPage();
+            this.materialCard6 = new MaterialSkin.Controls.MaterialCard();
+            this.materialButton4 = new MaterialSkin.Controls.MaterialButton();
+            this.wbSegitseg = new System.Windows.Forms.WebBrowser();
             this.ilMenuIcons = new System.Windows.Forms.ImageList(this.components);
             this.ofdSzotarDatasource = new System.Windows.Forms.OpenFileDialog();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.mlSzotanulasSzoismeretIsmeretlenMaxValue = new MaterialSkin.Controls.MaterialLabel();
+            this.materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
+            this.pbSzotanulasSpellcheck = new System.Windows.Forms.PictureBox();
+            this.pbHivatkozasokBBC = new System.Windows.Forms.PictureBox();
             this.mtcMenu.SuspendLayout();
             this.tpSzotar.SuspendLayout();
             this.materialCard4.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.materialCard1.SuspendLayout();
+            this.tpSzotanulas.SuspendLayout();
+            this.tpHivatkozasok.SuspendLayout();
+            this.mcHivatkozasok.SuspendLayout();
             this.tpBeallitasok.SuspendLayout();
             this.materialCard3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbarKivalasztottSzavakSzama)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretBizonytalan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmeretlen)).BeginInit();
+            this.tpSegitseg.SuspendLayout();
+            this.materialCard6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSzotanulasSpellcheck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHivatkozasokBBC)).BeginInit();
             this.SuspendLayout();
             // 
             // mtcMenu
@@ -105,6 +133,7 @@
             this.mtcMenu.SelectedIndex = 0;
             this.mtcMenu.Size = new System.Drawing.Size(1274, 653);
             this.mtcMenu.TabIndex = 0;
+            this.mtcMenu.SelectedIndexChanged += new System.EventHandler(this.mtcMenu_SelectedIndexChanged);
             // 
             // tpSzotar
             // 
@@ -167,7 +196,7 @@
             this.mbtnSzotarUjSzopar.MouseState = MaterialSkin.MouseState.HOVER;
             this.mbtnSzotarUjSzopar.Name = "mbtnSzotarUjSzopar";
             this.mbtnSzotarUjSzopar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.mbtnSzotarUjSzopar.Size = new System.Drawing.Size(270, 36);
+            this.mbtnSzotarUjSzopar.Size = new System.Drawing.Size(270, 0);
             this.mbtnSzotarUjSzopar.TabIndex = 6;
             this.mbtnSzotarUjSzopar.Text = "Új szópár létrehozása";
             this.mbtnSzotarUjSzopar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -252,7 +281,7 @@
             this.mbtnSzotarMentes.MouseState = MaterialSkin.MouseState.HOVER;
             this.mbtnSzotarMentes.Name = "mbtnSzotarMentes";
             this.mbtnSzotarMentes.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.mbtnSzotarMentes.Size = new System.Drawing.Size(180, 36);
+            this.mbtnSzotarMentes.Size = new System.Drawing.Size(180, 0);
             this.mbtnSzotarMentes.TabIndex = 4;
             this.mbtnSzotarMentes.Text = "Mentés";
             this.mbtnSzotarMentes.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -377,7 +406,7 @@
             this.mbtnSzotarTorles.MouseState = MaterialSkin.MouseState.HOVER;
             this.mbtnSzotarTorles.Name = "mbtnSzotarTorles";
             this.mbtnSzotarTorles.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.mbtnSzotarTorles.Size = new System.Drawing.Size(180, 36);
+            this.mbtnSzotarTorles.Size = new System.Drawing.Size(180, 0);
             this.mbtnSzotarTorles.TabIndex = 5;
             this.mbtnSzotarTorles.Text = "Kijelölt törlése";
             this.mbtnSzotarTorles.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -472,6 +501,17 @@
             // 
             // tpSzotanulas
             // 
+            this.tpSzotanulas.Controls.Add(this.pbSzotanulasSpellcheck);
+            this.tpSzotanulas.Controls.Add(this.materialTextBox21);
+            this.tpSzotanulas.Controls.Add(this.materialButton3);
+            this.tpSzotanulas.Controls.Add(this.materialFloatingActionButton2);
+            this.tpSzotanulas.Controls.Add(this.materialFloatingActionButton1);
+            this.tpSzotanulas.Controls.Add(this.materialButton2);
+            this.tpSzotanulas.Controls.Add(this.materialButton1);
+            this.tpSzotanulas.Controls.Add(this.szokartyaMinositoPozitivBtn);
+            this.tpSzotanulas.Controls.Add(this.szokartyaMinositoNullBtn);
+            this.tpSzotanulas.Controls.Add(this.szokartyaMinositoNegativBtn);
+            this.tpSzotanulas.Controls.Add(this.materialCard5);
             this.tpSzotanulas.ImageKey = "learning_64.png";
             this.tpSzotanulas.Location = new System.Drawing.Point(4, 39);
             this.tpSzotanulas.Name = "tpSzotanulas";
@@ -481,8 +521,167 @@
             this.tpSzotanulas.Text = "Szótanulás";
             this.tpSzotanulas.UseVisualStyleBackColor = true;
             // 
+            // materialButton3
+            // 
+            this.materialButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton3.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton3.Depth = 0;
+            this.materialButton3.HighEmphasis = true;
+            this.materialButton3.Icon = null;
+            this.materialButton3.Location = new System.Drawing.Point(22, 20);
+            this.materialButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton3.Name = "materialButton3";
+            this.materialButton3.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton3.Size = new System.Drawing.Size(149, 36);
+            this.materialButton3.TabIndex = 11;
+            this.materialButton3.Text = "Nyelvválasztás";
+            this.materialButton3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton3.UseAccentColor = false;
+            this.materialButton3.UseVisualStyleBackColor = true;
+            this.materialButton3.Click += new System.EventHandler(this.materialButton3_Click);
+            // 
+            // materialFloatingActionButton2
+            // 
+            this.materialFloatingActionButton2.Depth = 0;
+            this.materialFloatingActionButton2.Icon = null;
+            this.materialFloatingActionButton2.Location = new System.Drawing.Point(1005, 221);
+            this.materialFloatingActionButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFloatingActionButton2.Name = "materialFloatingActionButton2";
+            this.materialFloatingActionButton2.Size = new System.Drawing.Size(56, 56);
+            this.materialFloatingActionButton2.TabIndex = 10;
+            this.materialFloatingActionButton2.Text = "+";
+            this.materialFloatingActionButton2.UseVisualStyleBackColor = true;
+            // 
+            // materialFloatingActionButton1
+            // 
+            this.materialFloatingActionButton1.Depth = 0;
+            this.materialFloatingActionButton1.Icon = null;
+            this.materialFloatingActionButton1.Location = new System.Drawing.Point(261, 221);
+            this.materialFloatingActionButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFloatingActionButton1.Name = "materialFloatingActionButton1";
+            this.materialFloatingActionButton1.Size = new System.Drawing.Size(56, 56);
+            this.materialFloatingActionButton1.TabIndex = 9;
+            this.materialFloatingActionButton1.Text = "-";
+            this.materialFloatingActionButton1.UseVisualStyleBackColor = true;
+            // 
+            // materialButton2
+            // 
+            this.materialButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton2.Depth = 0;
+            this.materialButton2.HighEmphasis = true;
+            this.materialButton2.Icon = null;
+            this.materialButton2.Location = new System.Drawing.Point(982, 176);
+            this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton2.MinimumSize = new System.Drawing.Size(100, 0);
+            this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton2.Name = "materialButton2";
+            this.materialButton2.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton2.Size = new System.Drawing.Size(100, 36);
+            this.materialButton2.TabIndex = 8;
+            this.materialButton2.Text = "Előre";
+            this.materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton2.UseAccentColor = false;
+            this.materialButton2.UseVisualStyleBackColor = true;
+            // 
+            // materialButton1
+            // 
+            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton1.Depth = 0;
+            this.materialButton1.HighEmphasis = true;
+            this.materialButton1.Icon = null;
+            this.materialButton1.Location = new System.Drawing.Point(244, 176);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton1.MinimumSize = new System.Drawing.Size(100, 0);
+            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton1.Name = "materialButton1";
+            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton1.Size = new System.Drawing.Size(100, 36);
+            this.materialButton1.TabIndex = 7;
+            this.materialButton1.Text = "Vissza";
+            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton1.UseAccentColor = false;
+            this.materialButton1.UseVisualStyleBackColor = true;
+            // 
+            // szokartyaMinositoPozitivBtn
+            // 
+            this.szokartyaMinositoPozitivBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.szokartyaMinositoPozitivBtn.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.szokartyaMinositoPozitivBtn.Depth = 0;
+            this.szokartyaMinositoPozitivBtn.HighEmphasis = true;
+            this.szokartyaMinositoPozitivBtn.Icon = null;
+            this.szokartyaMinositoPozitivBtn.Location = new System.Drawing.Point(842, 457);
+            this.szokartyaMinositoPozitivBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.szokartyaMinositoPozitivBtn.MinimumSize = new System.Drawing.Size(158, 0);
+            this.szokartyaMinositoPozitivBtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.szokartyaMinositoPozitivBtn.Name = "szokartyaMinositoPozitivBtn";
+            this.szokartyaMinositoPozitivBtn.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.szokartyaMinositoPozitivBtn.Size = new System.Drawing.Size(158, 36);
+            this.szokartyaMinositoPozitivBtn.TabIndex = 6;
+            this.szokartyaMinositoPozitivBtn.Text = "Ok, tudom!";
+            this.szokartyaMinositoPozitivBtn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.szokartyaMinositoPozitivBtn.UseAccentColor = false;
+            this.szokartyaMinositoPozitivBtn.UseVisualStyleBackColor = true;
+            // 
+            // szokartyaMinositoNullBtn
+            // 
+            this.szokartyaMinositoNullBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.szokartyaMinositoNullBtn.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.szokartyaMinositoNullBtn.Depth = 0;
+            this.szokartyaMinositoNullBtn.HighEmphasis = true;
+            this.szokartyaMinositoNullBtn.Icon = null;
+            this.szokartyaMinositoNullBtn.Location = new System.Drawing.Point(601, 457);
+            this.szokartyaMinositoNullBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.szokartyaMinositoNullBtn.MinimumSize = new System.Drawing.Size(158, 0);
+            this.szokartyaMinositoNullBtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.szokartyaMinositoNullBtn.Name = "szokartyaMinositoNullBtn";
+            this.szokartyaMinositoNullBtn.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.szokartyaMinositoNullBtn.Size = new System.Drawing.Size(158, 36);
+            this.szokartyaMinositoNullBtn.TabIndex = 5;
+            this.szokartyaMinositoNullBtn.Text = "Bizonytalan";
+            this.szokartyaMinositoNullBtn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.szokartyaMinositoNullBtn.UseAccentColor = false;
+            this.szokartyaMinositoNullBtn.UseVisualStyleBackColor = true;
+            // 
+            // szokartyaMinositoNegativBtn
+            // 
+            this.szokartyaMinositoNegativBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.szokartyaMinositoNegativBtn.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.szokartyaMinositoNegativBtn.Depth = 0;
+            this.szokartyaMinositoNegativBtn.HighEmphasis = true;
+            this.szokartyaMinositoNegativBtn.Icon = null;
+            this.szokartyaMinositoNegativBtn.Location = new System.Drawing.Point(333, 457);
+            this.szokartyaMinositoNegativBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.szokartyaMinositoNegativBtn.MinimumSize = new System.Drawing.Size(158, 0);
+            this.szokartyaMinositoNegativBtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.szokartyaMinositoNegativBtn.Name = "szokartyaMinositoNegativBtn";
+            this.szokartyaMinositoNegativBtn.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.szokartyaMinositoNegativBtn.Size = new System.Drawing.Size(158, 36);
+            this.szokartyaMinositoNegativBtn.TabIndex = 4;
+            this.szokartyaMinositoNegativBtn.Text = "Nem tudom ";
+            this.szokartyaMinositoNegativBtn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.szokartyaMinositoNegativBtn.UseAccentColor = false;
+            this.szokartyaMinositoNegativBtn.UseVisualStyleBackColor = true;
+            // 
+            // materialCard5
+            // 
+            this.materialCard5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard5.Depth = 0;
+            this.materialCard5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard5.Location = new System.Drawing.Point(423, 69);
+            this.materialCard5.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard5.Name = "materialCard5";
+            this.materialCard5.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard5.Size = new System.Drawing.Size(500, 300);
+            this.materialCard5.TabIndex = 0;
+            this.materialCard5.Paint += new System.Windows.Forms.PaintEventHandler(this.materialCard5_Paint);
+            // 
             // tpHivatkozasok
             // 
+            this.tpHivatkozasok.Controls.Add(this.mcHivatkozasok);
             this.tpHivatkozasok.ImageKey = "urls_64.png";
             this.tpHivatkozasok.Location = new System.Drawing.Point(4, 39);
             this.tpHivatkozasok.Name = "tpHivatkozasok";
@@ -490,6 +689,35 @@
             this.tpHivatkozasok.TabIndex = 2;
             this.tpHivatkozasok.Text = "Hivatkozások";
             this.tpHivatkozasok.UseVisualStyleBackColor = true;
+            // 
+            // mcHivatkozasok
+            // 
+            this.mcHivatkozasok.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.mcHivatkozasok.Controls.Add(this.mlHivatkozasokBBC);
+            this.mcHivatkozasok.Controls.Add(this.pbHivatkozasokBBC);
+            this.mcHivatkozasok.Depth = 0;
+            this.mcHivatkozasok.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mcHivatkozasok.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.mcHivatkozasok.Location = new System.Drawing.Point(0, 0);
+            this.mcHivatkozasok.Margin = new System.Windows.Forms.Padding(14);
+            this.mcHivatkozasok.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mcHivatkozasok.Name = "mcHivatkozasok";
+            this.mcHivatkozasok.Padding = new System.Windows.Forms.Padding(14);
+            this.mcHivatkozasok.Size = new System.Drawing.Size(1266, 610);
+            this.mcHivatkozasok.TabIndex = 0;
+            // 
+            // mlHivatkozasokBBC
+            // 
+            this.mlHivatkozasokBBC.Depth = 0;
+            this.mlHivatkozasokBBC.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.mlHivatkozasokBBC.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            this.mlHivatkozasokBBC.Location = new System.Drawing.Point(17, 200);
+            this.mlHivatkozasokBBC.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mlHivatkozasokBBC.Name = "mlHivatkozasokBBC";
+            this.mlHivatkozasokBBC.Size = new System.Drawing.Size(186, 40);
+            this.mlHivatkozasokBBC.TabIndex = 1;
+            this.mlHivatkozasokBBC.Text = "BBC";
+            this.mlHivatkozasokBBC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tpBeallitasok
             // 
@@ -505,6 +733,10 @@
             // materialCard3
             // 
             this.materialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard3.Controls.Add(this.materialLabel5);
+            this.materialCard3.Controls.Add(this.materialLabel4);
+            this.materialCard3.Controls.Add(this.materialLabel3);
+            this.materialCard3.Controls.Add(this.materialLabel2);
             this.materialCard3.Controls.Add(this.mlSzotanulasSzoismeretIsmeretlenMaxValue);
             this.materialCard3.Controls.Add(this.materialLabel1);
             this.materialCard3.Controls.Add(this.mlSzotanulasKivalasztottSzavakSzamaValue);
@@ -532,6 +764,76 @@
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard3.Size = new System.Drawing.Size(587, 586);
             this.materialCard3.TabIndex = 0;
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel5.Location = new System.Drawing.Point(240, 386);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(10, 19);
+            this.materialLabel5.TabIndex = 22;
+            this.materialLabel5.Text = "0";
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel4.Location = new System.Drawing.Point(240, 339);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(10, 19);
+            this.materialLabel4.TabIndex = 21;
+            this.materialLabel4.Text = "0";
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.Location = new System.Drawing.Point(30, 386);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(34, 23);
+            this.materialLabel3.TabIndex = 20;
+            this.materialLabel3.Text = "000";
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.Location = new System.Drawing.Point(30, 330);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(32, 23);
+            this.materialLabel2.TabIndex = 19;
+            this.materialLabel2.Text = "000";
+            // 
+            // mlSzotanulasSzoismeretIsmeretlenMaxValue
+            // 
+            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.AutoSize = true;
+            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Depth = 0;
+            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Location = new System.Drawing.Point(501, 283);
+            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Name = "mlSzotanulasSzoismeretIsmeretlenMaxValue";
+            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Size = new System.Drawing.Size(10, 19);
+            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.TabIndex = 18;
+            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Text = "0";
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.Location = new System.Drawing.Point(240, 283);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(10, 19);
+            this.materialLabel1.TabIndex = 17;
+            this.materialLabel1.Text = "0";
             // 
             // mlSzotanulasKivalasztottSzavakSzamaValue
             // 
@@ -577,7 +879,7 @@
             this.mlSzotanulasSzoismeretIsmertValue.Name = "mlSzotanulasSzoismeretIsmertValue";
             this.mlSzotanulasSzoismeretIsmertValue.Size = new System.Drawing.Size(48, 23);
             this.mlSzotanulasSzoismeretIsmertValue.TabIndex = 15;
-            this.mlSzotanulasSzoismeretIsmertValue.Text = "000";
+            this.mlSzotanulasSzoismeretIsmertValue.Text = "0";
             // 
             // mlSzotanulasSzoismeretBizonytalanValue
             // 
@@ -588,13 +890,13 @@
             this.mlSzotanulasSzoismeretBizonytalanValue.Name = "mlSzotanulasSzoismeretBizonytalanValue";
             this.mlSzotanulasSzoismeretBizonytalanValue.Size = new System.Drawing.Size(48, 23);
             this.mlSzotanulasSzoismeretBizonytalanValue.TabIndex = 14;
-            this.mlSzotanulasSzoismeretBizonytalanValue.Text = "000";
+            this.mlSzotanulasSzoismeretBizonytalanValue.Text = "0";
             // 
             // mlSzotanulasSzoismeretIsmeretlenValue
             // 
             this.mlSzotanulasSzoismeretIsmeretlenValue.Depth = 0;
             this.mlSzotanulasSzoismeretIsmeretlenValue.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.mlSzotanulasSzoismeretIsmeretlenValue.Location = new System.Drawing.Point(40, 283);
+            this.mlSzotanulasSzoismeretIsmeretlenValue.Location = new System.Drawing.Point(30, 283);
             this.mlSzotanulasSzoismeretIsmeretlenValue.MouseState = MaterialSkin.MouseState.HOVER;
             this.mlSzotanulasSzoismeretIsmeretlenValue.Name = "mlSzotanulasSzoismeretIsmeretlenValue";
             this.mlSzotanulasSzoismeretIsmeretlenValue.Size = new System.Drawing.Size(48, 23);
@@ -743,6 +1045,7 @@
             // 
             // tpSegitseg
             // 
+            this.tpSegitseg.Controls.Add(this.materialCard6);
             this.tpSegitseg.ImageKey = "help.png";
             this.tpSegitseg.Location = new System.Drawing.Point(4, 39);
             this.tpSegitseg.Name = "tpSegitseg";
@@ -750,6 +1053,51 @@
             this.tpSegitseg.TabIndex = 4;
             this.tpSegitseg.Text = "Segítség";
             this.tpSegitseg.UseVisualStyleBackColor = true;
+            // 
+            // materialCard6
+            // 
+            this.materialCard6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard6.Controls.Add(this.materialButton4);
+            this.materialCard6.Controls.Add(this.wbSegitseg);
+            this.materialCard6.Depth = 0;
+            this.materialCard6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.materialCard6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard6.Location = new System.Drawing.Point(0, 0);
+            this.materialCard6.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard6.Name = "materialCard6";
+            this.materialCard6.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard6.Size = new System.Drawing.Size(1266, 610);
+            this.materialCard6.TabIndex = 2;
+            // 
+            // materialButton4
+            // 
+            this.materialButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton4.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton4.Depth = 0;
+            this.materialButton4.HighEmphasis = true;
+            this.materialButton4.Icon = null;
+            this.materialButton4.Location = new System.Drawing.Point(850, 67);
+            this.materialButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton4.Name = "materialButton4";
+            this.materialButton4.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton4.Size = new System.Drawing.Size(158, 36);
+            this.materialButton4.TabIndex = 1;
+            this.materialButton4.Text = "materialButton4";
+            this.materialButton4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton4.UseAccentColor = false;
+            this.materialButton4.UseVisualStyleBackColor = true;
+            this.materialButton4.Click += new System.EventHandler(this.materialButton4_Click);
+            // 
+            // wbSegitseg
+            // 
+            this.wbSegitseg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wbSegitseg.Location = new System.Drawing.Point(14, 14);
+            this.wbSegitseg.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wbSegitseg.Name = "wbSegitseg";
+            this.wbSegitseg.Size = new System.Drawing.Size(1238, 582);
+            this.wbSegitseg.TabIndex = 0;
             // 
             // ilMenuIcons
             // 
@@ -765,29 +1113,55 @@
             // 
             this.ofdSzotarDatasource.Filter = "CSV fájl (*.csv)|*.csv";
             // 
-            // materialLabel1
+            // materialTextBox21
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(240, 283);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(10, 19);
-            this.materialLabel1.TabIndex = 17;
-            this.materialLabel1.Text = "0";
+            this.materialTextBox21.AnimateReadOnly = false;
+            this.materialTextBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.materialTextBox21.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.materialTextBox21.Depth = 0;
+            this.materialTextBox21.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox21.HideSelection = true;
+            this.materialTextBox21.Hint = "Spellcheck";
+            this.materialTextBox21.LeadingIcon = null;
+            this.materialTextBox21.Location = new System.Drawing.Point(423, 386);
+            this.materialTextBox21.MaxLength = 32767;
+            this.materialTextBox21.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialTextBox21.Name = "materialTextBox21";
+            this.materialTextBox21.PasswordChar = '\0';
+            this.materialTextBox21.PrefixSuffixText = null;
+            this.materialTextBox21.ReadOnly = false;
+            this.materialTextBox21.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.materialTextBox21.SelectedText = "";
+            this.materialTextBox21.SelectionLength = 0;
+            this.materialTextBox21.SelectionStart = 0;
+            this.materialTextBox21.ShortcutsEnabled = true;
+            this.materialTextBox21.Size = new System.Drawing.Size(435, 48);
+            this.materialTextBox21.TabIndex = 12;
+            this.materialTextBox21.TabStop = false;
+            this.materialTextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.materialTextBox21.TrailingIcon = null;
+            this.materialTextBox21.UseSystemPasswordChar = false;
             // 
-            // mlSzotanulasSzoismeretIsmeretlenMaxValue
+            // pbSzotanulasSpellcheck
             // 
-            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.AutoSize = true;
-            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Depth = 0;
-            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Location = new System.Drawing.Point(501, 283);
-            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Name = "mlSzotanulasSzoismeretIsmeretlenMaxValue";
-            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Size = new System.Drawing.Size(10, 19);
-            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.TabIndex = 18;
-            this.mlSzotanulasSzoismeretIsmeretlenMaxValue.Text = "0";
+            this.pbSzotanulasSpellcheck.Image = global::Szokartya.Properties.Resources.bbc;
+            this.pbSzotanulasSpellcheck.Location = new System.Drawing.Point(865, 387);
+            this.pbSzotanulasSpellcheck.Name = "pbSzotanulasSpellcheck";
+            this.pbSzotanulasSpellcheck.Size = new System.Drawing.Size(58, 61);
+            this.pbSzotanulasSpellcheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSzotanulasSpellcheck.TabIndex = 13;
+            this.pbSzotanulasSpellcheck.TabStop = false;
+            // 
+            // pbHivatkozasokBBC
+            // 
+            this.pbHivatkozasokBBC.Image = global::Szokartya.Properties.Resources.bbc;
+            this.pbHivatkozasokBBC.Location = new System.Drawing.Point(17, 17);
+            this.pbHivatkozasokBBC.Name = "pbHivatkozasokBBC";
+            this.pbHivatkozasokBBC.Size = new System.Drawing.Size(180, 180);
+            this.pbHivatkozasokBBC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHivatkozasokBBC.TabIndex = 0;
+            this.pbHivatkozasokBBC.TabStop = false;
+            this.pbHivatkozasokBBC.Click += new System.EventHandler(this.pbHivatkozasokBBC_Click);
             // 
             // MainForm
             // 
@@ -808,6 +1182,10 @@
             this.materialCard2.PerformLayout();
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
+            this.tpSzotanulas.ResumeLayout(false);
+            this.tpSzotanulas.PerformLayout();
+            this.tpHivatkozasok.ResumeLayout(false);
+            this.mcHivatkozasok.ResumeLayout(false);
             this.tpBeallitasok.ResumeLayout(false);
             this.materialCard3.ResumeLayout(false);
             this.materialCard3.PerformLayout();
@@ -815,6 +1193,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmert)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretBizonytalan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmeretlen)).EndInit();
+            this.tpSegitseg.ResumeLayout(false);
+            this.materialCard6.ResumeLayout(false);
+            this.materialCard6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSzotanulasSpellcheck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHivatkozasokBBC)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -866,6 +1249,27 @@
         private MaterialSkin.Controls.MaterialLabel mlSzotanulasKivalasztottSzavakSzamaValue;
         private MaterialSkin.Controls.MaterialLabel mlSzotanulasSzoismeretIsmeretlenMaxValue;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialCard materialCard5;
+        private MaterialSkin.Controls.MaterialButton szokartyaMinositoPozitivBtn;
+        private MaterialSkin.Controls.MaterialButton szokartyaMinositoNullBtn;
+        private MaterialSkin.Controls.MaterialButton szokartyaMinositoNegativBtn;
+        private MaterialSkin.Controls.MaterialButton materialButton2;
+        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialFloatingActionButton materialFloatingActionButton2;
+        private MaterialSkin.Controls.MaterialFloatingActionButton materialFloatingActionButton1;
+        private MaterialSkin.Controls.MaterialButton materialButton3;
+        private System.Windows.Forms.WebBrowser wbSegitseg;
+        private MaterialSkin.Controls.MaterialButton materialButton4;
+        private MaterialSkin.Controls.MaterialCard materialCard6;
+        private MaterialSkin.Controls.MaterialCard mcHivatkozasok;
+        private System.Windows.Forms.PictureBox pbHivatkozasokBBC;
+        private MaterialSkin.Controls.MaterialLabel mlHivatkozasokBBC;
+        private System.Windows.Forms.PictureBox pbSzotanulasSpellcheck;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21;
     }
 }
 
