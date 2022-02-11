@@ -34,7 +34,7 @@ Miután kiválasztottad a tanulni kívánt nyelvet, a korábban elmentett szavai
 //
 // Ez a forraskod multiline
 sdfasdfg
-adsfasdfasdf
+adsfasdfasdfxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 dasf
 
 private function valami() {

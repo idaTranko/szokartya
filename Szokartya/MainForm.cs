@@ -317,47 +317,132 @@ namespace Szokartya
             szotarSelectedItemIndex = szotar.Count;
         }
 
+        #region SzotanulasSzoismeretBeallitasok
         private void tbarKivalasztottSzavakSzama_Scroll(object sender, EventArgs e)
         {
             mlSzotanulasKivalasztottSzavakSzamaValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
             tbarSzotanulasSzoismeretIsmeretlen.Maximum = tbarKivalasztottSzavakSzama.Value;
             tbarSzotanulasSzoismeretBizonytalan.Maximum = tbarKivalasztottSzavakSzama.Value;
             tbarSzotanulasSzoismeretIsmert.Maximum = tbarKivalasztottSzavakSzama.Value;
+            mlSzotanulasSzoismeretIsmeretlenMaxValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
+            mlSzotanulasSzoismeretBizonytalanMaxValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
+            mlSzotanulasSzoismeretIsmertMaxValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
             tbarSzotanulasSzoismeretIsmeretlen.Value = 0;
             tbarSzotanulasSzoismeretBizonytalan.Value = 0;
             tbarSzotanulasSzoismeretIsmert.Value = 0;
         }
 
-        private void materialComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private int[] GetSzotanulasScrollValuesFromRatios(int maxItems, string[] scrollRatios)
         {
-            if (materialComboBox1.SelectedIndex == 0)
+            int[] v = { 0, 0, 0 };
+            v[0] = Convert.ToInt32(
+                Math.Floor(
+                    (maxItems / 100.0) * Convert.ToInt32(scrollRatios[0])
+                )
+            );
+            v[1] = Convert.ToInt32(
+                Math.Floor(
+                    (maxItems / 100.0) * Convert.ToInt32(scrollRatios[1])
+                )
+            );
+            v[2] = Convert.ToInt32(
+                Math.Floor(
+                    (maxItems / 100.0) * Convert.ToInt32(scrollRatios[2])
+                )
+            );
+
+            // Bizonytalan darabszam "kipotlasa".
+            int vsum = v[0] + v[1] + v[2];
+            if (vsum < maxItems)
             {
-                tbarSzotanulasSzoismeretIsmeretlen.Maximum = 0;
-                tbarSzotanulasSzoismeretBizonytalan.Maximum = 0;
-                tbarSzotanulasSzoismeretIsmert.Maximum = 0;
-                tbarSzotanulasSzoismeretIsmeretlen.Value = 0;
-                tbarSzotanulasSzoismeretBizonytalan.Value = 0;
-                tbarSzotanulasSzoismeretIsmert.Value = 0;
+                v[1] = maxItems - (v[0] + v[2]);
             }
+
+            return v;
+        }
+
+        private string[] GetSzotanulasRatiosFromScrollValues(int maxItems, string[] scrollRatios)
+        {
+            string[] v = { "0", "0", "0" };
+
+
+            return v;
+        }
+
+        private void mcbSzotanulasTemplate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (mcbSzotanulasTemplate.SelectedIndex == 0)
+            {
+                var ratiosString = GetConfig("szotanulasTemplateKonnyu").Split(',');
+                MessageBox.Show("test: " + ratiosString[0] + "   " + ratiosString[1] + "  " + ratiosString[2]);
+                int[] ratioValues = GetSzotanulasScrollValuesFromRatios(tbarKivalasztottSzavakSzama.Value, ratiosString);
+                tbarSzotanulasSzoismeretIsmeretlen.Value = ratioValues[0];
+                tbarSzotanulasSzoismeretBizonytalan.Value = ratioValues[1];
+                tbarSzotanulasSzoismeretIsmert.Value = ratioValues[2];
+                SetSzotanulasSzoismeretScrolls();
+            }
+            if (mcbSzotanulasTemplate.SelectedIndex == 1)
+            {
+                var ratiosString = GetConfig("szotanulasTemplateHalado").Split(',');
+                MessageBox.Show("test: " + ratiosString[0] + "   " + ratiosString[1] + "  " + ratiosString[2]);
+                int[] ratioValues = GetSzotanulasScrollValuesFromRatios(tbarKivalasztottSzavakSzama.Value, ratiosString);
+                tbarSzotanulasSzoismeretIsmeretlen.Value = ratioValues[0];
+                tbarSzotanulasSzoismeretBizonytalan.Value = ratioValues[1];
+                tbarSzotanulasSzoismeretIsmert.Value = ratioValues[2];
+                SetSzotanulasSzoismeretScrolls();
+            }
+            if (mcbSzotanulasTemplate.SelectedIndex == 2)
+            {
+                var ratiosString = GetConfig("szotanulasTemplateNehez").Split(',');
+                MessageBox.Show("test: " + ratiosString[0] + "   " + ratiosString[1] + "  " + ratiosString[2]);
+                int[] ratioValues = GetSzotanulasScrollValuesFromRatios(tbarKivalasztottSzavakSzama.Value, ratiosString);
+                tbarSzotanulasSzoismeretIsmeretlen.Value = ratioValues[0];
+                tbarSzotanulasSzoismeretBizonytalan.Value = ratioValues[1];
+                tbarSzotanulasSzoismeretIsmert.Value = ratioValues[2];
+                SetSzotanulasSzoismeretScrolls();
+            }
+        }
+
+        private void SetSzotanulasSzoismeretScrolls()
+        {
+            mlSzotanulasSzoismeretIsmeretlenValue.Text = Convert.ToString(tbarSzotanulasSzoismeretIsmeretlen.Value);
+            mlSzotanulasSzoismeretBizonytalanValue.Text = Convert.ToString(tbarSzotanulasSzoismeretBizonytalan.Value);
+            mlSzotanulasSzoismeretIsmertValue.Text = Convert.ToString(tbarSzotanulasSzoismeretIsmert.Value);
         }
 
         private void tbarSzotanulasSzoismeretIsmeretlen_Scroll(object sender, EventArgs e)
         {
-            // Onmagabol nem kell levonnia, hanem a masik ketto osszeget kell levonni a tbarKivalasztottSzavakSzama-bol
-            //tbarSzotanulasSzoismeretIsmeretlen.Maximum = tbarKivalasztottSzavakSzama.Value - tbarSzotanulasSzoismeretIsmeretlen.Value;
-            mlSzotanulasSzoismeretIsmeretlenValue.Text = Convert.ToString(tbarSzotanulasSzoismeretIsmeretlen.Value);
-            mlSzotanulasSzoismeretIsmeretlenMaxValue.Text = Convert.ToString(tbarSzotanulasSzoismeretIsmeretlen.Maximum);
+            int max = tbarKivalasztottSzavakSzama.Value - (tbarSzotanulasSzoismeretBizonytalan.Value + tbarSzotanulasSzoismeretIsmert.Value);
+            if (tbarSzotanulasSzoismeretIsmeretlen.Value >= max)
+            {
+                tbarSzotanulasSzoismeretIsmeretlen.Value = max;
+            }
+            SetSzotanulasSzoismeretScrolls();
         }
 
         private void tbarSzotanulasSzoismeretBizonytalan_Scroll(object sender, EventArgs e)
         {
-            //tbarSzotanulasSzoismeretBizonytalan.Maximum = tbarKivalasztottSzavakSzama.Value - tbarSzotanulasSzoismeretBizonytalan.Value;
+            int max = tbarKivalasztottSzavakSzama.Value - (tbarSzotanulasSzoismeretIsmeretlen.Value + tbarSzotanulasSzoismeretIsmert.Value);
+            if (tbarSzotanulasSzoismeretBizonytalan.Value >= max)
+            {
+                tbarSzotanulasSzoismeretBizonytalan.Value = max;
+            }
+            SetSzotanulasSzoismeretScrolls();
         }
 
         private void tbarSzotanulasSzoismeretIsmert_Scroll(object sender, EventArgs e)
         {
-            //tbarSzotanulasSzoismeretIsmert.Maximum = tbarKivalasztottSzavakSzama.Value - tbarSzotanulasSzoismeretIsmert.Value;
+            int max = tbarKivalasztottSzavakSzama.Value - (tbarSzotanulasSzoismeretIsmeretlen.Value + tbarSzotanulasSzoismeretBizonytalan.Value);
+            if (tbarSzotanulasSzoismeretIsmert.Value >= max)
+            {
+                tbarSzotanulasSzoismeretIsmert.Value = max;
+            }
+            SetSzotanulasSzoismeretScrolls();
         }
+
+        #endregion
+
 
         private void materialCard5_Paint(object sender, PaintEventArgs e)
         {
@@ -402,7 +487,7 @@ namespace Szokartya
         {
             System.Diagnostics.Process.Start("https://www.bbc.com/");
         }
-
+        
         private void mtcMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.Text = mtcMenu.SelectedTab.Text;
@@ -413,7 +498,123 @@ namespace Szokartya
             pbSzotanulasSpellcheck.Image = Szokartya.Properties.Resources.checkmarkx1;
             pbSzotanulasSpellcheck.Invalidate();
         }
+
+        private void pbSzotanulasSpellcheck_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void pbHivatkozasokCNN_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://edition.cnn.com/");
+        }
+
+        private void pbHivatkozasokEuroNews_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://hu.euronews.com/");
+        }
+
+        private void pbHivatkozasokVOALE_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://learningenglish.voanews.com/");
+        }
+
+        private void pbHivatkozasokTuneIn_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://tunein.com/");
+        }
+
+        private void pbHivatkozasokDW_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.dw.com/de/themen/s-9077");
+        }
+
+        private void pbHivatkozasokDerSpiegel_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.spiegel.de/");
+        }
+
+        private void pictureBox1pbHivatkozasokDieZeit_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.zeit.de/index?utm_referrer=https%3A%2F%2Fwww.google.com%2F");
+        }
+
+        private void pictureBox1pbHivatkozasokDWradio_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.dw.com/en/radio/s-30604");
+        }
+
+        private void pictureBox1pbHivatkozasokDeutschlandFM_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.deutschland.fm/");
+        }
+
+        private void mcHivatkozasok_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void materialCard3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private List<SzotarRekord> SzavakKivalsztasaSulySzerint(List<SzotarRekord> szotar, int maxItems, int ismeretlenDarab, int bizonytalanDarab, int ismertDarab)
+        {
+            List<SzotarRekord> kivalasztottSzavak = new List<SzotarRekord>(); 
+            int ismeretlenSzavakKivalasztvaDarab = 0;
+            int bizonytalanSzavakKivalasztvaDarab = 0;
+            int ismertSzavakKivalasztvaDarab = 0;
+
+            // Osszekeverni a szotarban a SzotarRekord-okat
+            szotar.Shuffle();
+
+            foreach (SzotarRekord rekord in szotar)
+            {
+                if (ismeretlenSzavakKivalasztvaDarab + bizonytalanSzavakKivalasztvaDarab + ismertSzavakKivalasztvaDarab == maxItems)
+                {
+                    break;
+                }
+                if (rekord.Suly <= 3)
+                {
+                    if (ismeretlenSzavakKivalasztvaDarab < ismeretlenDarab)
+                    {
+                        kivalasztottSzavak.Add(rekord);
+                        ismeretlenSzavakKivalasztvaDarab++;
+                    }
+                    continue;
+                }
+                if (rekord.Suly >= 4 && rekord.Suly <= 7)
+                {
+                    if (bizonytalanSzavakKivalasztvaDarab < bizonytalanDarab)
+                    {
+                        kivalasztottSzavak.Add(rekord);
+                        bizonytalanSzavakKivalasztvaDarab++;
+                    }
+                    continue;
+                }
+                if (rekord.Suly >= 8)
+                {
+                    if (ismertSzavakKivalasztvaDarab < ismertDarab)
+                    {
+                        kivalasztottSzavak.Add(rekord);
+                        ismertSzavakKivalasztvaDarab++;
+                    }
+                    continue;
+                }
+            }
+
+            kivalasztottSzavak.Shuffle();
+
+            return kivalasztottSzavak;
+        }
+
+
+
+
+
     }
+    
 }
 
 

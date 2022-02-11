@@ -118,28 +118,52 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="bbc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bbc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="spiegel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spiegel1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="checkmarkx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\checkmarkx1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cnn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cnn.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="diezeit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\diezeit.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dw" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dw.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="euronews" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\euronews.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="TuneIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TuneIn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="spiegel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\spiegel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="deutschlandFm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\deutschlandFm.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bbc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bbc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="euronews1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\euronews.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="euronews" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\euronews.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="checkmarkx1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\checkmarkx1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="times" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\times.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dw.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="diezeit1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\diezeit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="diezeit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\diezeit.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cnn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cnn.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DWradio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DWradio.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VOALE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VOALE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="checkmarkx11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\checkmarkx11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
