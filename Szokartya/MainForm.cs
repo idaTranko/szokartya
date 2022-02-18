@@ -13,8 +13,8 @@ using System.Globalization;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using CsvHelper.Configuration;
-using System.IO;
 using CsvHelper;
+using System.IO;
 
 namespace Szokartya
 {
@@ -23,8 +23,10 @@ namespace Szokartya
         private readonly MaterialSkinManager materialSkinManager;
         private string szotarDatasource = string.Empty;
         private List<SzotarRekord> szotar = new List<SzotarRekord>();
+        private List<SzotarRekord> kivalasztottSzavak = new List<SzotarRekord>();
         private CsvConfiguration csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
         private int szotarSelectedItemIndex = -1;
+        private int kivalasztottSzavakIndex = 0;
         private readonly int SULY_MIN = 0;
         private readonly int SULY_MAX = 10;
         private int szotanulasMaradek = 0;
@@ -61,11 +63,71 @@ namespace Szokartya
             //
             // Beállítások beolvasása
             //
-            mswSotetTema.Checked = Convert.ToBoolean(GetConfig("sotetTema"));
-            setTheme(mswSotetTema.Checked);
             mtbSzotarDatasource.Text = GetConfig("szotarDatasource");
             szotarDatasource = GetConfig("szotarDatasource");
+            
+            tbarKivalasztottSzavakSzama.Value = Convert.ToInt32(GetConfig("szotanulasKivalasztottSzavakSzama"));
+            mcbSzotanulasTemplate.SelectedIndex = Convert.ToInt32(GetConfig("szotanulasKivalasztottTemplateIndex"));
+            //
+            tbarSzotanulasSzoismeretIsmeretlen.Value = Convert.ToInt32(GetConfig("szotanulasIsmeretlenSzavakSzama"));
+            tbarSzotanulasSzoismeretBizonytalan.Value = Convert.ToInt32(GetConfig("szotanulasBizonytalanSzavakSzama"));
+            tbarSzotanulasSzoismeretIsmert.Value = Convert.ToInt32(GetConfig("szotanulasIsmertSzavakSzama"));
+            //
+            tbarSzotanulasSzoismeretIsmeretlen.Maximum = tbarKivalasztottSzavakSzama.Value;
+            tbarSzotanulasSzoismeretBizonytalan.Maximum = tbarKivalasztottSzavakSzama.Value;
+            tbarSzotanulasSzoismeretIsmert.Maximum = tbarKivalasztottSzavakSzama.Value;
+            //
+            mlSzotanulasKivalasztottSzavakSzamaValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
+            mlSzotanulasSzoismeretIsmeretlenValue.Text = GetConfig("szotanulasIsmeretlenSzavakSzama");
+            mlSzotanulasSzoismeretBizonytalanValue.Text = GetConfig("szotanulasBizonytalanSzavakSzama");
+            mlSzotanulasSzoismeretIsmertValue.Text = GetConfig("szotanulasIsmertSzavakSzama");
+            //
+            mlSzotanulasSzoismeretIsmeretlenMaxValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
+            mlSzotanulasSzoismeretBizonytalanMaxValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
+            mlSzotanulasSzoismeretIsmertMaxValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
 
+            //
+            //
+            //
+            mtcMenu.SelectedIndex = 1;
+            //
+            //
+            //
+
+
+
+            // Themes
+            var allowedThemeColors = GetConfig("allowedThemeColors").Split(',');
+            foreach (string allowedThemeColor in allowedThemeColors)
+            {
+                mcbThemeColor.Items.Add(allowedThemeColor);
+            }
+            var allowedThemeAccentColors = GetConfig("allowedThemeAccentColors").Split(',');
+            foreach (string allowedThemeAccentColor in allowedThemeAccentColors)
+            {
+                mcbThemeAccentColor.Items.Add(allowedThemeAccentColor);
+            }
+            // Theme
+            mswThemeDarkMode.Checked = Convert.ToBoolean(GetConfig("themeDarkMode"));
+            mcbThemeColor.SelectedItem = GetConfig("themeColor");
+            mcbThemeColor.MaxDropDownItems = 100;
+            mcbThemeAccentColor.SelectedItem = GetConfig("themeAccentColor");
+            mcbThemeAccentColor.MaxDropDownItems = 100;
+            if (GetConfig("themeTextShade").Equals("white"))
+            {
+                mswThemeTextShade.Checked = true;
+                mswThemeTextShade.Text = "Theme TextShade White";
+            }
+            else if (GetConfig("themeTextShade").Equals("black"))
+            {
+                mswThemeTextShade.Checked = false;
+                mswThemeTextShade.Text = "Theme TextShade Black";
+            }
+            else
+            {
+                throw new Exception("Nem letezik ilyen TextShade! Csak black vagy white lehet.");
+            }
+            //
             //
             //
             //
@@ -105,12 +167,6 @@ namespace Szokartya
             return ConfigurationManager.AppSettings[key];
         }
 
-        private void msSotetTema_CheckedChanged(object sender, EventArgs e)
-        {
-            SetConfig("sotetTema", Convert.ToString(mswSotetTema.Checked));
-            setTheme(mswSotetTema.Checked);
-        }
-
         public void setTheme(bool useDark)
         {
             if (useDark)
@@ -123,6 +179,87 @@ namespace Szokartya
             }
         }
 
+        void SetMaterialTheme()
+        {
+            // Config vars
+            string themeColor = GetConfig("themeColor");
+            string themeAccentColor = GetConfig("themeAccentColor");
+            string themeTextShade = GetConfig("themeTextShade");
+            bool themeDarkMode = Convert.ToBoolean(GetConfig("themeDarkMode"));
+
+            // MaterialSkinManager vars
+            TextShade textShade = TextShade.WHITE;
+            Primary primary = Primary.DeepPurple500;
+            Primary darkPrimary = Primary.DeepPurple700;
+            Primary lightPrimary = Primary.DeepPurple100;
+            Accent accent = Accent.Teal200;
+
+            // Fill MaterialSkinManager vars
+            if (themeTextShade.Equals("white"))
+            {
+                textShade = TextShade.WHITE;
+            }
+            else if (themeTextShade.Equals("black"))
+            {
+                textShade = TextShade.BLACK;
+            }
+            else
+            {
+                throw new Exception("Nem letezik ilyen TextShade! Csak black vagy white lehet.");
+            }
+
+            // themeColor
+            if (themeColor.Equals("Red")) { primary = Primary.Red500; darkPrimary = Primary.Red700; lightPrimary = Primary.Red100; }
+            else if (themeColor.Equals("Pink")) { primary = Primary.Pink500; darkPrimary = Primary.Pink700; lightPrimary = Primary.Pink100; }
+            else if (themeColor.Equals("Purple")) { primary = Primary.Purple500; darkPrimary = Primary.Purple700; lightPrimary = Primary.Purple100; }
+            else if (themeColor.Equals("DeepPurple")) { primary = Primary.DeepPurple500; darkPrimary = Primary.DeepPurple700; lightPrimary = Primary.DeepPurple100; }
+            else if (themeColor.Equals("Indigo")) { primary = Primary.Indigo500; darkPrimary = Primary.Indigo700; lightPrimary = Primary.Indigo100; }
+            else if (themeColor.Equals("Blue")) { primary = Primary.Blue500; darkPrimary = Primary.Blue700; lightPrimary = Primary.Blue100; }
+            else if (themeColor.Equals("LightBlue")) { primary = Primary.LightBlue500; darkPrimary = Primary.LightBlue700; lightPrimary = Primary.LightBlue100; }
+            else if (themeColor.Equals("Cyan")) { primary = Primary.Cyan500; darkPrimary = Primary.Cyan700; lightPrimary = Primary.Cyan100; }
+            else if (themeColor.Equals("Teal")) { primary = Primary.Teal500; darkPrimary = Primary.Teal700; lightPrimary = Primary.Teal100; }
+            else if (themeColor.Equals("Green")) { primary = Primary.Green500; darkPrimary = Primary.Green700; lightPrimary = Primary.Green100; }
+            else if (themeColor.Equals("LightGreen")) { primary = Primary.LightGreen500; darkPrimary = Primary.LightGreen700; lightPrimary = Primary.LightGreen100; }
+            else if (themeColor.Equals("Lime")) { primary = Primary.Lime500; darkPrimary = Primary.Lime700; lightPrimary = Primary.Lime100; }
+            else if (themeColor.Equals("Yellow")) { primary = Primary.Yellow500; darkPrimary = Primary.Yellow700; lightPrimary = Primary.Yellow100; }
+            else if (themeColor.Equals("Amber")) { primary = Primary.Amber500; darkPrimary = Primary.Amber700; lightPrimary = Primary.Amber100; }
+            else if (themeColor.Equals("Orange")) { primary = Primary.Orange500; darkPrimary = Primary.Orange700; lightPrimary = Primary.Orange100; }
+            else if (themeColor.Equals("DeepOrange")) { primary = Primary.DeepOrange500; darkPrimary = Primary.DeepOrange700; lightPrimary = Primary.DeepOrange100; }
+            else if (themeColor.Equals("Brown")) { primary = Primary.Brown500; darkPrimary = Primary.Brown700; lightPrimary = Primary.Brown100; }
+            else if (themeColor.Equals("Grey")) { primary = Primary.Grey500; darkPrimary = Primary.Grey700; lightPrimary = Primary.Grey100; }
+            else if (themeColor.Equals("BlueGrey")) { primary = Primary.BlueGrey500; darkPrimary = Primary.BlueGrey700; lightPrimary = Primary.BlueGrey100; }
+
+            // themeAccentColor
+            if (themeAccentColor.Equals("Red")) { accent = Accent.Red200; }
+            else if (themeAccentColor.Equals("Pink")) { accent = Accent.Pink200; }
+            else if (themeAccentColor.Equals("Purple")) { accent = Accent.Purple200; }
+            else if (themeAccentColor.Equals("DeepPurple")) { accent = Accent.DeepPurple200; }
+            else if (themeAccentColor.Equals("Indigo")) { accent = Accent.Indigo200; }
+            else if (themeAccentColor.Equals("Blue")) { accent = Accent.Blue200; }
+            else if (themeAccentColor.Equals("LightBlue")) { accent = Accent.LightBlue200; }
+            else if (themeAccentColor.Equals("Cyan")) { accent = Accent.Cyan200; }
+            else if (themeAccentColor.Equals("Teal")) { accent = Accent.Teal200; }
+            else if (themeAccentColor.Equals("Green")) { accent = Accent.Green200; }
+            else if (themeAccentColor.Equals("LightGreen")) { accent = Accent.LightGreen200; }
+            else if (themeAccentColor.Equals("Lime")) { accent = Accent.Lime200; }
+            else if (themeAccentColor.Equals("Yellow")) { accent = Accent.Yellow200; }
+            else if (themeAccentColor.Equals("Amber")) { accent = Accent.Amber200; }
+            else if (themeAccentColor.Equals("Orange")) { accent = Accent.Orange200; }
+            else if (themeAccentColor.Equals("DeepOrange")) { accent = Accent.DeepOrange200; }
+
+            if (themeDarkMode)
+            {
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            }
+            else
+            {
+                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            }
+
+            // Set the theme
+            materialSkinManager.ColorScheme = new ColorScheme(primary, darkPrimary, lightPrimary, accent, textShade);
+            Invalidate();
+        }
         private void mbtnSzotarDatasource_Click(object sender, EventArgs e)
         {
             var result = ofdSzotarDatasource.ShowDialog();
@@ -143,12 +280,14 @@ namespace Szokartya
         {
             ReadSzotarCsv();
             FillSzotarListview();
+            EnableSzotanulasControls(true);
             mbtnSzotarUjSzopar.Enabled = true;
         }
 
+        #region CSVHelper Methods
         private void ReadSzotarCsv()
         {
-            using (var reader = new StreamReader(szotarDatasource))
+            using (var reader = new StreamReader(szotarDatasource, Encoding.UTF8))
             using (var csv = new CsvReader(reader, csvConfig))
             {
                 csv.Context.RegisterClassMap<SzotarRekordMap>();
@@ -165,7 +304,7 @@ namespace Szokartya
                 csv.WriteRecords(szotar);
             }
         }
-
+        #endregion
         private void ClearSzotarInputFields()
         {
             mtbSzotarAnyanyelv.Clear();
@@ -184,16 +323,25 @@ namespace Szokartya
         private void FillSzotarListview()
         {
             mlvSzotar.Items.Clear();
-            szotar.Reverse();
-            foreach (SzotarRekord item in szotar)
+            //szotar.Reverse();
+            for (int i = szotar.Count - 1; i > 0; i--)
             {
                 var row = new ListViewItem(new[] {
-                    UppercaseFirst(item.Anyanyelv),
-                    UppercaseFirst(item.Idegennyelv),
-                    Convert.ToString(item.Suly)
+                    UppercaseFirst(szotar[i].Anyanyelv),
+                    UppercaseFirst(szotar[i].Idegennyelv),
+                    Convert.ToString(szotar[i].Suly)
                 });
                 mlvSzotar.Items.Add(row);
             }
+            //foreach (SzotarRekord item in szotar)
+            //{
+            //    var row = new ListViewItem(new[] {
+            //        UppercaseFirst(item.Anyanyelv),
+            //        UppercaseFirst(item.Idegennyelv),
+            //        Convert.ToString(item.Suly)
+            //    });
+            //    mlvSzotar.Items.Add(row);
+            //}
             mlSzotarSzoparokDarabszama.Text = "Szópárok darabszáma: " + szotar.Count;
         }
 
@@ -248,29 +396,29 @@ namespace Szokartya
 
             if (String.IsNullOrWhiteSpace(mtbSzotarAnyanyelv.Text))
             {
-                ShowSnackbar("Az anyanyelv input nem lehet üres!");
+                ShowMaterialSnackbar("Az anyanyelv input nem lehet üres!");
                 return false;
             }
             if (String.IsNullOrWhiteSpace(mtbSzotarIdegennyelv.Text))
             {
-                ShowSnackbar("Az idegennyelv input nem lehet üres!");
+                ShowMaterialSnackbar("Az idegennyelv input nem lehet üres!");
                 return false;
             }
             if (String.IsNullOrWhiteSpace(mtbSzotarSuly.Text))
             {
-                ShowSnackbar("Az súly input nem lehet üres!");
+                ShowMaterialSnackbar("Az súly input nem lehet üres!");
                 return false;
             }
             if (!int.TryParse(mtbSzotarSuly.Text, out suly))
             {
-                ShowSnackbar("Az súly értéknek " + SULY_MIN + " és " + SULY_MAX + " között kell lennie!");
+                ShowMaterialSnackbar("Az súly értéknek " + SULY_MIN + " és " + SULY_MAX + " között kell lennie!");
                 return false;
             }
             else
             {
                 if (suly < SULY_MIN || suly > SULY_MAX)
                 {
-                    ShowSnackbar("Az súly értéknek " + SULY_MIN + " és " + SULY_MAX + " között kell lennie!");
+                    ShowMaterialSnackbar("Az súly értéknek " + SULY_MIN + " és " + SULY_MAX + " között kell lennie!");
                     return false;
                 }
             }
@@ -278,10 +426,15 @@ namespace Szokartya
             return true;
         }
 
-        private void ShowSnackbar(String message)
+        private void ShowMaterialSnackbar(String message)
         {
             MaterialSnackBar SnackBarMessage = new MaterialSnackBar(message, 5000, "OK", false);
             SnackBarMessage.Show(this);
+        }
+        private DialogResult ShowMaterialDialogOK(String title, String message)
+        {
+            MaterialDialog materialDialog = new MaterialDialog(this, title, message, "OK");
+            return materialDialog.ShowDialog(this);
         }
 
         private void mlvSzotar_ItemActivate(object sender, EventArgs e)
@@ -330,6 +483,10 @@ namespace Szokartya
             tbarSzotanulasSzoismeretIsmeretlen.Value = 0;
             tbarSzotanulasSzoismeretBizonytalan.Value = 0;
             tbarSzotanulasSzoismeretIsmert.Value = 0;
+            mlSzotanulasSzoismeretIsmeretlenValue.Text = "0";
+            mlSzotanulasSzoismeretBizonytalanValue.Text = "0";
+            mlSzotanulasSzoismeretIsmertValue.Text = "0";
+            SetConfig("szotanulasKivalasztottSzavakSzama", Convert.ToString(tbarKivalasztottSzavakSzama.Value));
         }
 
         private int[] GetSzotanulasScrollValuesFromRatios(int maxItems, string[] scrollRatios)
@@ -371,37 +528,33 @@ namespace Szokartya
 
         private void mcbSzotanulasTemplate_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string[] ratiosString = {};
 
             if (mcbSzotanulasTemplate.SelectedIndex == 0)
             {
-                var ratiosString = GetConfig("szotanulasTemplateKonnyu").Split(',');
-                MessageBox.Show("test: " + ratiosString[0] + "   " + ratiosString[1] + "  " + ratiosString[2]);
-                int[] ratioValues = GetSzotanulasScrollValuesFromRatios(tbarKivalasztottSzavakSzama.Value, ratiosString);
-                tbarSzotanulasSzoismeretIsmeretlen.Value = ratioValues[0];
-                tbarSzotanulasSzoismeretBizonytalan.Value = ratioValues[1];
-                tbarSzotanulasSzoismeretIsmert.Value = ratioValues[2];
-                SetSzotanulasSzoismeretScrolls();
+                ratiosString = GetConfig("szotanulasTemplateKonnyu").Split(',');
+
             }
             if (mcbSzotanulasTemplate.SelectedIndex == 1)
             {
-                var ratiosString = GetConfig("szotanulasTemplateHalado").Split(',');
-                MessageBox.Show("test: " + ratiosString[0] + "   " + ratiosString[1] + "  " + ratiosString[2]);
-                int[] ratioValues = GetSzotanulasScrollValuesFromRatios(tbarKivalasztottSzavakSzama.Value, ratiosString);
-                tbarSzotanulasSzoismeretIsmeretlen.Value = ratioValues[0];
-                tbarSzotanulasSzoismeretBizonytalan.Value = ratioValues[1];
-                tbarSzotanulasSzoismeretIsmert.Value = ratioValues[2];
-                SetSzotanulasSzoismeretScrolls();
+                ratiosString = GetConfig("szotanulasTemplateHalado").Split(',');
+
             }
             if (mcbSzotanulasTemplate.SelectedIndex == 2)
             {
-                var ratiosString = GetConfig("szotanulasTemplateNehez").Split(',');
-                MessageBox.Show("test: " + ratiosString[0] + "   " + ratiosString[1] + "  " + ratiosString[2]);
-                int[] ratioValues = GetSzotanulasScrollValuesFromRatios(tbarKivalasztottSzavakSzama.Value, ratiosString);
-                tbarSzotanulasSzoismeretIsmeretlen.Value = ratioValues[0];
-                tbarSzotanulasSzoismeretBizonytalan.Value = ratioValues[1];
-                tbarSzotanulasSzoismeretIsmert.Value = ratioValues[2];
-                SetSzotanulasSzoismeretScrolls();
+                ratiosString = GetConfig("szotanulasTemplateNehez").Split(',');
             }
+
+            int[] ratioValues = GetSzotanulasScrollValuesFromRatios(tbarKivalasztottSzavakSzama.Value, ratiosString);
+            tbarSzotanulasSzoismeretIsmeretlen.Value = ratioValues[0];
+            tbarSzotanulasSzoismeretBizonytalan.Value = ratioValues[1];
+            tbarSzotanulasSzoismeretIsmert.Value = ratioValues[2];
+            SetSzotanulasSzoismeretScrolls();
+            SetConfig("szotanulasKivalasztottTemplateIndex", Convert.ToString(mcbSzotanulasTemplate.SelectedIndex));
+            SetConfig("szotanulasIsmeretlenSzavakSzama", Convert.ToString(tbarSzotanulasSzoismeretIsmeretlen.Value));
+            SetConfig("szotanulasBizonytalanSzavakSzama", Convert.ToString(tbarSzotanulasSzoismeretBizonytalan.Value));
+            SetConfig("szotanulasIsmertSzavakSzama", Convert.ToString(tbarSzotanulasSzoismeretIsmert.Value));
+
         }
 
         private void SetSzotanulasSzoismeretScrolls()
@@ -419,6 +572,7 @@ namespace Szokartya
                 tbarSzotanulasSzoismeretIsmeretlen.Value = max;
             }
             SetSzotanulasSzoismeretScrolls();
+            SetConfig("szotanulasIsmeretlenSzavakSzama", Convert.ToString(tbarSzotanulasSzoismeretIsmeretlen.Value));
         }
 
         private void tbarSzotanulasSzoismeretBizonytalan_Scroll(object sender, EventArgs e)
@@ -429,6 +583,7 @@ namespace Szokartya
                 tbarSzotanulasSzoismeretBizonytalan.Value = max;
             }
             SetSzotanulasSzoismeretScrolls();
+            SetConfig("szotanulasBizonytalanSzavakSzama", Convert.ToString(tbarSzotanulasSzoismeretBizonytalan.Value));
         }
 
         private void tbarSzotanulasSzoismeretIsmert_Scroll(object sender, EventArgs e)
@@ -439,15 +594,10 @@ namespace Szokartya
                 tbarSzotanulasSzoismeretIsmert.Value = max;
             }
             SetSzotanulasSzoismeretScrolls();
+            SetConfig("szotanulasIsmertSzavakSzama", Convert.ToString(tbarSzotanulasSzoismeretIsmert.Value));
         }
 
         #endregion
-
-
-        private void materialCard5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void materialButton4_Click(object sender, EventArgs e)
         {
@@ -491,17 +641,18 @@ namespace Szokartya
         private void mtcMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.Text = mtcMenu.SelectedTab.Text;
-        }
-
-        private void materialButton3_Click(object sender, EventArgs e)
-        {
-            pbSzotanulasSpellcheck.Image = Szokartya.Properties.Resources.checkmarkx1;
-            pbSzotanulasSpellcheck.Invalidate();
-        }
-
-        private void pbSzotanulasSpellcheck_Click(object sender, EventArgs e)
-        {
-            
+            if (mtcMenu.SelectedIndex == 2)
+            {
+                if (szotar.Count == 0)
+                {
+                    ShowMaterialDialogOK("Hiba", "Szótanulás használatához, töltsd be egy szótárat!");
+                    EnableSzotanulasControls(false);
+                }
+                else
+                {
+                    EnableSzotanulasControls(true);
+                }
+            }
         }
 
         private void pbHivatkozasokCNN_Click_1(object sender, EventArgs e)
@@ -549,17 +700,7 @@ namespace Szokartya
             System.Diagnostics.Process.Start("https://www.deutschland.fm/");
         }
 
-        private void mcHivatkozasok_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void materialCard3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private List<SzotarRekord> SzavakKivalsztasaSulySzerint(List<SzotarRekord> szotar, int maxItems, int ismeretlenDarab, int bizonytalanDarab, int ismertDarab)
+        private List<SzotarRekord> SzavakKivalsztasaSulySzerint(List<SzotarRekord> szotarToShuffle, int maxItems, int ismeretlenDarab, int bizonytalanDarab, int ismertDarab)
         {
             List<SzotarRekord> kivalasztottSzavak = new List<SzotarRekord>(); 
             int ismeretlenSzavakKivalasztvaDarab = 0;
@@ -567,9 +708,9 @@ namespace Szokartya
             int ismertSzavakKivalasztvaDarab = 0;
 
             // Osszekeverni a szotarban a SzotarRekord-okat
-            szotar.Shuffle();
+            szotarToShuffle.Shuffle();
 
-            foreach (SzotarRekord rekord in szotar)
+            foreach (SzotarRekord rekord in szotarToShuffle)
             {
                 if (ismeretlenSzavakKivalasztvaDarab + bizonytalanSzavakKivalasztvaDarab + ismertSzavakKivalasztvaDarab == maxItems)
                 {
@@ -609,29 +750,103 @@ namespace Szokartya
             return kivalasztottSzavak;
         }
 
+        private void szokartyaMinositoPozitivBtn_Click(object sender, EventArgs e)
+        {
+            //ismertDarab +1//
+        }
 
+        private void mtbThemeColor_SelectedValueChanged(object sender, EventArgs e)
+        {
+            SetConfig("themeColor", mcbThemeColor.SelectedItem.ToString());
+            SetMaterialTheme();
+        }
 
+        private void mcbThemeAccentColor_SelectedValueChanged(object sender, EventArgs e)
+        {
+            SetConfig("themeAccentColor", mcbThemeAccentColor.SelectedItem.ToString());
+            SetMaterialTheme();
+        }
 
+        private void mswThemeTextShade_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mswThemeTextShade.Checked)
+            {
+                SetConfig("themeTextShade", "white");
+                mswThemeTextShade.Text = "Theme TextShade White";
+            }
+            else
+            {
+                SetConfig("themeTextShade", "black");
+                mswThemeTextShade.Text = "Theme TextShade Black";
+            }
+            SetMaterialTheme();
+        }
+
+        private void mswThemeDarkMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mswThemeDarkMode.Checked == true)
+            {
+                SetConfig("themeDarkMode", "true");
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            }
+            else
+            {
+                SetConfig("themeDarkMode", "false");
+                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            }
+        }
+
+        private void mbtnSzotanulasUjSzavakTanulasa_Click(object sender, EventArgs e)
+        {
+            var cloneSzotar = new List<SzotarRekord>(szotar);
+            kivalasztottSzavak = SzavakKivalsztasaSulySzerint(
+                cloneSzotar,
+                tbarKivalasztottSzavakSzama.Value,
+                tbarSzotanulasSzoismeretIsmeretlen.Value,
+                tbarSzotanulasSzoismeretBizonytalan.Value,
+                tbarSzotanulasSzoismeretIsmert.Value
+            );
+
+            if (kivalasztottSzavak.Count > 0)
+            {
+                kivalasztottSzavakIndex = 0;
+                mlSzotanulasProgress.Text = Convert.ToString(kivalasztottSzavakIndex) + "/" + Convert.ToString(kivalasztottSzavak.Count);
+                mlSzotanulasSzoIdegen.Text = kivalasztottSzavak[kivalasztottSzavakIndex].Idegennyelv;
+                mlSzotanulasSzoSuly.Text = kivalasztottSzavak[kivalasztottSzavakIndex].Suly.ToString();
+            }
+            else
+            {
+                ShowMaterialDialogOK("Hiba", "Nem tudtam kivalasztani egy szot sem a megadott beallitasokkal, valtoztasdf meg a beallitasokban a szavak aranyat");
+            }
+
+            // var x = szotar.FindIndex(a => a.Anyanyelv == kivalasztottSzavak[kivalasztottSzavakIndex].Anyanyelv);
+        }
+
+        private void EnableSzotanulasControls(bool value)
+        {
+            mbtnSzotanulasUjSzavakTanulasa.Enabled = value;
+            mbtnSzotanulasEddigiEredmenyekMentese.Enabled = value;
+            mbtnSzotanulasElozo.Enabled = value;
+            mbtnSzotanulasKovetkezo.Enabled = value;
+            mbtnSzotanulasNemTudom.Enabled = value;
+            mbtnSzotanulasBizonytalan.Enabled = value;
+            mbtnSzotanulasTudom.Enabled = value;
+            mlSzotanulasSzoIdegen.Enabled = value;
+            mlSzotanulasSzoAnyanyelv.Enabled = value;
+            mtbSzotanulasBetuzes.Enabled = value;
+            pbSzotanulasBetuzesStatusz.Enabled = value;
+        }
+
+        /*private void szokartyaMinositoNullBtn_Click(object sender, EventArgs e)
+        {
+        bizonytalanDarab +1
+        }*/
+
+        /*private void szokartyaMinositoNegativBtn_Click(object sender, EventArgs e)
+        {
+        ismeretlenDarab +1
+        }*/
+    }
 
     }
-    
-}
 
-
-/*
- * 
-    
-    // egyik
-    List<int> szotarKivalasztottIndexek = List<int>();
-    mlSzotanulasSzo.Text = szotar[szotarKivalasztottIndexek[i]].Idegennyelv;
-    szotar[szotarKivalasztottIndexek[i]].IncrementSuly(-1)
-
-
-    // masik
-    szotar<SzotarRekord> . Suly
-    int kivalasztottSzavakDarabszama = 20; // List<int> aminek 20 eleme van
-    2,3,3,3,3,3,3,3,5,5,5,5,5,5,5,
-    2,67,4,78,9,4,3,
-
- * 
- * */

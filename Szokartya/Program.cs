@@ -10,12 +10,21 @@ namespace Szokartya
     {
         private static Random rng = new Random();
 
+        /// <summary>
+        /// Ez úgy működik, hogy random számú list index value-iket helycserél egy segédváltozó segítségével.
+        /// Kiválaszt egy random számmal egy indexet ez a "k". 
+        /// 
+        /// List<string> lista = new List<string>() { "A", "B", "C", "D", "E" };
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
         public static void Shuffle<T>(this IList<T> list)
         {
-            int n = list.Count;
+            int n = list.Count;     // 5db van benne
             while (n > 1)
             {
-                n--;
+                n--;    // 5 -1 akkor 4
                 int k = rng.Next(n + 1);
                 T value = list[k];
                 list[k] = list[n];

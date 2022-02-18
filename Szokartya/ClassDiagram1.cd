@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Szokartya.SzotarRekord">
+    <Position X="10" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAIACAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SzotarRekord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Szokartya.MainForm">
+    <Position X="5" Y="0.5" Width="3.75" />
+    <Members>
+      <Method Name="materialButton3_Click" Hidden="true" />
+      <Method Name="materialButton4_Click" Hidden="true" />
+      <Method Name="materialButton5_Click" Hidden="true" />
+      <Method Name="materialCard3_Paint" Hidden="true" />
+      <Method Name="materialCard5_Paint" Hidden="true" />
+      <Method Name="mbtnSzotarDatasource_Click" Hidden="true" />
+      <Method Name="mbtnSzotarFrissites_Click" Hidden="true" />
+      <Method Name="mbtnSzotarMentes_Click" Hidden="true" />
+      <Method Name="mbtnSzotarTorles_Click" Hidden="true" />
+      <Method Name="mbtnSzotarUjSzopar_Click" Hidden="true" />
+      <Method Name="mcbSzotanulasTemplate_SelectedIndexChanged" Hidden="true" />
+      <Method Name="mcHivatkozasok_Paint" Hidden="true" />
+      <Method Name="pbHivatkozasokBBC_Click" Hidden="true" />
+      <Method Name="pbHivatkozasokCNN_Click_1" Hidden="true" />
+      <Method Name="pbHivatkozasokDerSpiegel_Click" Hidden="true" />
+      <Method Name="pbHivatkozasokDW_Click" Hidden="true" />
+      <Method Name="pbHivatkozasokEuroNews_Click" Hidden="true" />
+      <Method Name="pbHivatkozasokTuneIn_Click" Hidden="true" />
+      <Method Name="pbHivatkozasokVOALE_Click" Hidden="true" />
+      <Method Name="pbSzotanulasSpellcheck_Click" Hidden="true" />
+      <Method Name="pictureBox1pbHivatkozasokDeutschlandFM_Click" Hidden="true" />
+      <Method Name="pictureBox1pbHivatkozasokDieZeit_Click" Hidden="true" />
+      <Method Name="pictureBox1pbHivatkozasokDWradio_Click" Hidden="true" />
+      <Method Name="SetLastColumnWidthSzotar" Hidden="true" />
+      <Method Name="SetSzotanulasSzoismeretScrolls" Hidden="true" />
+      <Method Name="tbarKivalasztottSzavakSzama_Scroll" Hidden="true" />
+      <Method Name="tbarSzotanulasSzoismeretBizonytalan_Scroll" Hidden="true" />
+      <Method Name="tbarSzotanulasSzoismeretIsmeretlen_Scroll" Hidden="true" />
+      <Method Name="tbarSzotanulasSzoismeretIsmert_Scroll" Hidden="true" />
+      <Method Name="UppercaseFirst" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>DbI4mA+SJGcolSf9GDLRsUI+UJDbAsRAZPmekiwgH4A=</HashCode>
+      <FileName>MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Szokartya.ExtensionsClass">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Szokartya.Program">
+    <Position X="2.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Szokartya.SzotarRekordMap">
+    <Position X="9.5" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SzotarRekordMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
