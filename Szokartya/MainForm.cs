@@ -29,11 +29,13 @@ namespace Szokartya
         private int kivalasztottSzavakIndex = 0;
         private readonly int SULY_MIN = 0;
         private readonly int SULY_MAX = 10;
-        private int szotanulasMaradek = 0;
+        private bool megoldasMutatva = false;
 
         public MainForm()
         {
             InitializeComponent();
+
+            panelSzotanulasBetuzve.BackColor = Color.Red;
 
             SetLastColumnWidthSzotar();
             mlvSzotar.Layout += delegate
@@ -131,6 +133,8 @@ namespace Szokartya
             //
             //
             //
+
+            ClearSzotanulasControls();
 
             // ezt atirni. akkorra amikor betoljuk a maximalis elemeket
             //tbarSzotanulasSzoismeretIsmeretlen.Maximum = tbarKivalasztottSzavakSzama.Value - tbarSzotanulasSzoismeretIsmeretlen.Value;
@@ -807,19 +811,17 @@ namespace Szokartya
                 tbarSzotanulasSzoismeretIsmert.Value
             );
 
+            ClearSzotanulasControls();
+
             if (kivalasztottSzavak.Count > 0)
             {
                 kivalasztottSzavakIndex = 0;
-                mlSzotanulasProgress.Text = Convert.ToString(kivalasztottSzavakIndex) + "/" + Convert.ToString(kivalasztottSzavak.Count);
-                mlSzotanulasSzoIdegen.Text = kivalasztottSzavak[kivalasztottSzavakIndex].Idegennyelv;
-                mlSzotanulasSzoSuly.Text = kivalasztottSzavak[kivalasztottSzavakIndex].Suly.ToString();
+                FillSzotanulasControls();
             }
             else
             {
                 ShowMaterialDialogOK("Hiba", "Nem tudtam kivalasztani egy szot sem a megadott beallitasokkal, valtoztasdf meg a beallitasokban a szavak aranyat");
             }
-
-            // var x = szotar.FindIndex(a => a.Anyanyelv == kivalasztottSzavak[kivalasztottSzavakIndex].Anyanyelv);
         }
 
         private void EnableSzotanulasControls(bool value)
@@ -833,20 +835,182 @@ namespace Szokartya
             mbtnSzotanulasTudom.Enabled = value;
             mlSzotanulasSzoIdegen.Enabled = value;
             mlSzotanulasSzoAnyanyelv.Enabled = value;
-            mtbSzotanulasBetuzes.Enabled = value;
-            pbSzotanulasBetuzesStatusz.Enabled = value;
+            mtbSzotanulasBetuzve.Enabled = value;
         }
 
-        /*private void szokartyaMinositoNullBtn_Click(object sender, EventArgs e)
+        private void FillSzotanulasControls()
         {
-        bizonytalanDarab +1
-        }*/
+            mlSzotanulasProgress.Text = Convert.ToString(kivalasztottSzavakIndex + 1) + "/" + Convert.ToString(kivalasztottSzavak.Count);
+            mlSzotanulasSzoIdegen.Text = UppercaseFirst(kivalasztottSzavak[kivalasztottSzavakIndex].Idegennyelv);
+            mlSzotanulasSzoSuly.Text = kivalasztottSzavak[kivalasztottSzavakIndex].Suly.ToString();
+        }
 
-        /*private void szokartyaMinositoNegativBtn_Click(object sender, EventArgs e)
+        private void ClearSzotanulasControls()
         {
-        ismeretlenDarab +1
-        }*/
+            megoldasMutatva = false;
+            mlSzotanulasSzoIdegen.Text = String.Empty;
+            mlSzotanulasSzoAnyanyelv.Text = String.Empty;
+            mtbSzotanulasBetuzve.Clear();
+            mlSzotanulasProgress.Text = "0/0";
+            mlSzotanulasSzoSuly.Text = "0";
+            panelSzotanulasBetuzve.BackColor = Color.Transparent;
+        }
+
+        private void mlSzotanulasSzoIdegen_Click(object sender, EventArgs e)
+        {
+            if (kivalasztottSzavak.Count > 0)
+            {
+                if (kivalasztottSzavak[kivalasztottSzavakIndex] != null)
+                {
+                    if (megoldasMutatva)
+                    {
+                        mlSzotanulasSzoAnyanyelv.Text = String.Empty;
+                        megoldasMutatva = false;
+                    }
+                    else
+                    {
+                        mlSzotanulasSzoAnyanyelv.Text = UppercaseFirst(kivalasztottSzavak[kivalasztottSzavakIndex].Anyanyelv);
+                        megoldasMutatva = true;
+                    }
+                }
+            }
+        }
+
+        private void mtbSzotanulasBetuzve_TextChanged(object sender, EventArgs e)
+        {
+            if (kivalasztottSzavakIndex > -1 && kivalasztottSzavak.Count > 0)
+            {
+                if (kivalasztottSzavak[kivalasztottSzavakIndex].Anyanyelv == mtbSzotanulasBetuzve.Text)
+                {
+                    panelSzotanulasBetuzve.BackColor = Color.Lime;
+                }
+                else
+                {
+                    if (mtbSzotanulasBetuzve.Text.Length > 0)
+                    {
+                        if (mtbSzotanulasBetuzve.isFocused)
+                        {
+                            panelSzotanulasBetuzve.BackColor = Color.Yellow;
+                        }
+                        else
+                        {
+                            panelSzotanulasBetuzve.BackColor = Color.Red;
+                        }
+                    }
+                    else
+                    {
+                        panelSzotanulasBetuzve.BackColor = Color.Transparent;
+                    }
+                }
+            }
+        }
+
+        private void mtbSzotanulasBetuzve_Leave(object sender, EventArgs e)
+        {
+            if (kivalasztottSzavak.Count > 0)
+            {
+                if (kivalasztottSzavak[kivalasztottSzavakIndex].Anyanyelv == mtbSzotanulasBetuzve.Text)
+                {
+                    panelSzotanulasBetuzve.BackColor = Color.Lime;
+                }
+                else
+                {
+                    if (mtbSzotanulasBetuzve.Text.Length > 0)
+                    {
+                        panelSzotanulasBetuzve.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        panelSzotanulasBetuzve.BackColor = Color.Transparent;
+                    }
+                }
+            }
+        }
+
+        private void mbtnSzotanulasKovetkezo_Click(object sender, EventArgs e)
+        {
+            if (kivalasztottSzavakIndex > -1 && kivalasztottSzavakIndex < kivalasztottSzavak.Count() - 1)
+            {
+                kivalasztottSzavakIndex++;
+                ClearSzotanulasControls();
+                FillSzotanulasControls();
+            }
+        }
+
+        private void mbtnSzotanulasElozo_Click(object sender, EventArgs e)
+        {
+            if (kivalasztottSzavakIndex > 0 && kivalasztottSzavakIndex <= kivalasztottSzavak.Count())
+            {
+                kivalasztottSzavakIndex--;
+                ClearSzotanulasControls();
+                FillSzotanulasControls();
+            }
+        }
+
+        private void mbtnSzotanulasNemTudom_Click(object sender, EventArgs e)
+        {
+            if (kivalasztottSzavak.Count > 0)
+            {
+                kivalasztottSzavak[kivalasztottSzavakIndex].Suly = kivalasztottSzavak[kivalasztottSzavakIndex].Suly + Convert.ToInt32(GetConfig("szotanulasIsmeretlenSzoSulyHozzaadas"));
+                if (kivalasztottSzavakIndex > -1 && kivalasztottSzavakIndex < kivalasztottSzavak.Count() - 1)
+                {
+                    kivalasztottSzavakIndex++;
+                    ClearSzotanulasControls();
+                    FillSzotanulasControls();
+                }
+            }
+        }
+
+        private void mbtnSzotanulasBizonytalan_Click(object sender, EventArgs e)
+        {
+            if (kivalasztottSzavak.Count > 0)
+            {
+                kivalasztottSzavak[kivalasztottSzavakIndex].Suly = kivalasztottSzavak[kivalasztottSzavakIndex].Suly + Convert.ToInt32(GetConfig("szotanulasBizonytalanSzoSulyHozzaadas"));
+                if (kivalasztottSzavakIndex > -1 && kivalasztottSzavakIndex < kivalasztottSzavak.Count() - 1)
+                {
+                    kivalasztottSzavakIndex++;
+                    ClearSzotanulasControls();
+                    FillSzotanulasControls();
+                }
+            }
+        }
+
+        private void mbtnSzotanulasTudom_Click(object sender, EventArgs e)
+        {
+            if (kivalasztottSzavak.Count > 0)
+            {
+                kivalasztottSzavak[kivalasztottSzavakIndex].Suly = kivalasztottSzavak[kivalasztottSzavakIndex].Suly + Convert.ToInt32(GetConfig("szotanulasIsmertSzoSulyHozzaadas"));
+                if (kivalasztottSzavakIndex > -1 && kivalasztottSzavakIndex < kivalasztottSzavak.Count() - 1)
+                {
+                    kivalasztottSzavakIndex++;
+                    ClearSzotanulasControls();
+                    FillSzotanulasControls();
+                }
+            }
+        }
+
+        private void TanultSzavakMenteseASzotarba()
+        {
+            if (kivalasztottSzavak.Count > 0)
+            {
+                foreach (SzotarRekord rekord in kivalasztottSzavak)
+                {
+                    int szotartIndex = szotar.FindIndex(x => (x.Anyanyelv == rekord.Anyanyelv) && (x.Idegennyelv == rekord.Idegennyelv));
+                    if (szotartIndex >= 0)
+                    {
+                        szotar[szotartIndex].Suly = rekord.Suly;
+                    }
+                }
+                WriteSzotarCsv();
+                ShowMaterialSnackbar("Sikeresen mentettük a szótárat a megadott CSV fájlba.");
+            }
+        }
+
+        private void mbtnSzotanulasEddigiEredmenyekMentese_Click(object sender, EventArgs e)
+        {
+            TanultSzavakMenteseASzotarba();
+        }
     }
 
-    }
+}
 
