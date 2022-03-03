@@ -69,25 +69,15 @@
             this.tpHivatkozasok = new System.Windows.Forms.TabPage();
             this.mcHivatkozasok = new MaterialSkin.Controls.MaterialCard();
             this.mlHivatkozasokDeutschlandFM = new MaterialSkin.Controls.MaterialLabel();
-            this.pictureBox1pbHivatkozasokDeutschlandFM = new System.Windows.Forms.PictureBox();
             this.mlHivatkozasokDWradio = new MaterialSkin.Controls.MaterialLabel();
-            this.pictureBox1pbHivatkozasokDWradio = new System.Windows.Forms.PictureBox();
             this.mlHivatkozasokDieZeit = new MaterialSkin.Controls.MaterialLabel();
-            this.pictureBox1pbHivatkozasokDieZeit = new System.Windows.Forms.PictureBox();
             this.mlHivatkozasokDerSpiegel = new MaterialSkin.Controls.MaterialLabel();
-            this.pbHivatkozasokDerSpiegel = new System.Windows.Forms.PictureBox();
             this.mlHivatkozasokDW = new MaterialSkin.Controls.MaterialLabel();
-            this.pbHivatkozasokDW = new System.Windows.Forms.PictureBox();
             this.mlHivatkozasokTuneIn = new MaterialSkin.Controls.MaterialLabel();
-            this.pbHivatkozasokTuneIn = new System.Windows.Forms.PictureBox();
             this.mlHivatkozasokVOALE = new MaterialSkin.Controls.MaterialLabel();
-            this.pbHivatkozasokVOALE = new System.Windows.Forms.PictureBox();
             this.mlHivatkozasokEuronews = new MaterialSkin.Controls.MaterialLabel();
-            this.pbHivatkozasokEuroNews = new System.Windows.Forms.PictureBox();
             this.mlHivatkozasokCNN = new MaterialSkin.Controls.MaterialLabel();
-            this.pbHivatkozasokCNN = new System.Windows.Forms.PictureBox();
             this.mlHivatkozasokBBC = new MaterialSkin.Controls.MaterialLabel();
-            this.pbHivatkozasokBBC = new System.Windows.Forms.PictureBox();
             this.tpBeallitasok = new System.Windows.Forms.TabPage();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
@@ -119,11 +109,23 @@
             this.mlBeallitasokAlkalmazas = new MaterialSkin.Controls.MaterialLabel();
             this.tpSegitseg = new System.Windows.Forms.TabPage();
             this.materialCard6 = new MaterialSkin.Controls.MaterialCard();
-            this.materialButton4 = new MaterialSkin.Controls.MaterialButton();
             this.wbSegitseg = new System.Windows.Forms.WebBrowser();
             this.ilMenuIcons = new System.Windows.Forms.ImageList(this.components);
             this.ofdSzotarDatasource = new System.Windows.Forms.OpenFileDialog();
+            this.materialCard7 = new MaterialSkin.Controls.MaterialCard();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.pictureBox1pbHivatkozasokDeutschlandFM = new System.Windows.Forms.PictureBox();
+            this.pictureBox1pbHivatkozasokDWradio = new System.Windows.Forms.PictureBox();
+            this.pictureBox1pbHivatkozasokDieZeit = new System.Windows.Forms.PictureBox();
+            this.pbHivatkozasokDerSpiegel = new System.Windows.Forms.PictureBox();
+            this.pbHivatkozasokDW = new System.Windows.Forms.PictureBox();
+            this.pbHivatkozasokTuneIn = new System.Windows.Forms.PictureBox();
+            this.pbHivatkozasokVOALE = new System.Windows.Forms.PictureBox();
+            this.pbHivatkozasokEuroNews = new System.Windows.Forms.PictureBox();
+            this.pbHivatkozasokCNN = new System.Windows.Forms.PictureBox();
+            this.pbHivatkozasokBBC = new System.Windows.Forms.PictureBox();
             this.mtcMenu.SuspendLayout();
+            this.tpKezdooldal.SuspendLayout();
             this.tpSzotar.SuspendLayout();
             this.materialCard4.SuspendLayout();
             this.materialCard2.SuspendLayout();
@@ -132,6 +134,15 @@
             this.materialCard5.SuspendLayout();
             this.tpHivatkozasok.SuspendLayout();
             this.mcHivatkozasok.SuspendLayout();
+            this.tpBeallitasok.SuspendLayout();
+            this.materialCard3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbarKivalasztottSzavakSzama)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretBizonytalan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmeretlen)).BeginInit();
+            this.tpSegitseg.SuspendLayout();
+            this.materialCard6.SuspendLayout();
+            this.materialCard7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1pbHivatkozasokDeutschlandFM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1pbHivatkozasokDWradio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1pbHivatkozasokDieZeit)).BeginInit();
@@ -142,14 +153,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbHivatkozasokEuroNews)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHivatkozasokCNN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHivatkozasokBBC)).BeginInit();
-            this.tpBeallitasok.SuspendLayout();
-            this.materialCard3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbarKivalasztottSzavakSzama)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmert)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretBizonytalan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmeretlen)).BeginInit();
-            this.tpSegitseg.SuspendLayout();
-            this.materialCard6.SuspendLayout();
             this.SuspendLayout();
             // 
             // mtcMenu
@@ -174,6 +177,7 @@
             // 
             // tpKezdooldal
             // 
+            this.tpKezdooldal.Controls.Add(this.materialCard7);
             this.tpKezdooldal.ImageKey = "home.png";
             this.tpKezdooldal.Location = new System.Drawing.Point(4, 39);
             this.tpKezdooldal.Name = "tpKezdooldal";
@@ -901,17 +905,6 @@
             this.mlHivatkozasokDeutschlandFM.Text = "Deutschland FM";
             this.mlHivatkozasokDeutschlandFM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1pbHivatkozasokDeutschlandFM
-            // 
-            this.pictureBox1pbHivatkozasokDeutschlandFM.Image = global::Szokartya.Properties.Resources.deutschlandFm;
-            this.pictureBox1pbHivatkozasokDeutschlandFM.Location = new System.Drawing.Point(947, 283);
-            this.pictureBox1pbHivatkozasokDeutschlandFM.Name = "pictureBox1pbHivatkozasokDeutschlandFM";
-            this.pictureBox1pbHivatkozasokDeutschlandFM.Size = new System.Drawing.Size(180, 180);
-            this.pictureBox1pbHivatkozasokDeutschlandFM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1pbHivatkozasokDeutschlandFM.TabIndex = 18;
-            this.pictureBox1pbHivatkozasokDeutschlandFM.TabStop = false;
-            this.pictureBox1pbHivatkozasokDeutschlandFM.Click += new System.EventHandler(this.pictureBox1pbHivatkozasokDeutschlandFM_Click);
-            // 
             // mlHivatkozasokDWradio
             // 
             this.mlHivatkozasokDWradio.Depth = 0;
@@ -924,17 +917,6 @@
             this.mlHivatkozasokDWradio.TabIndex = 17;
             this.mlHivatkozasokDWradio.Text = "Deutsche Welle Radio";
             this.mlHivatkozasokDWradio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox1pbHivatkozasokDWradio
-            // 
-            this.pictureBox1pbHivatkozasokDWradio.Image = global::Szokartya.Properties.Resources.DWradio;
-            this.pictureBox1pbHivatkozasokDWradio.Location = new System.Drawing.Point(724, 283);
-            this.pictureBox1pbHivatkozasokDWradio.Name = "pictureBox1pbHivatkozasokDWradio";
-            this.pictureBox1pbHivatkozasokDWradio.Size = new System.Drawing.Size(180, 180);
-            this.pictureBox1pbHivatkozasokDWradio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1pbHivatkozasokDWradio.TabIndex = 16;
-            this.pictureBox1pbHivatkozasokDWradio.TabStop = false;
-            this.pictureBox1pbHivatkozasokDWradio.Click += new System.EventHandler(this.pictureBox1pbHivatkozasokDWradio_Click);
             // 
             // mlHivatkozasokDieZeit
             // 
@@ -949,17 +931,6 @@
             this.mlHivatkozasokDieZeit.Text = "Die Zeit";
             this.mlHivatkozasokDieZeit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1pbHivatkozasokDieZeit
-            // 
-            this.pictureBox1pbHivatkozasokDieZeit.Image = global::Szokartya.Properties.Resources.diezeit1;
-            this.pictureBox1pbHivatkozasokDieZeit.Location = new System.Drawing.Point(512, 283);
-            this.pictureBox1pbHivatkozasokDieZeit.Name = "pictureBox1pbHivatkozasokDieZeit";
-            this.pictureBox1pbHivatkozasokDieZeit.Size = new System.Drawing.Size(180, 180);
-            this.pictureBox1pbHivatkozasokDieZeit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1pbHivatkozasokDieZeit.TabIndex = 14;
-            this.pictureBox1pbHivatkozasokDieZeit.TabStop = false;
-            this.pictureBox1pbHivatkozasokDieZeit.Click += new System.EventHandler(this.pictureBox1pbHivatkozasokDieZeit_Click);
-            // 
             // mlHivatkozasokDerSpiegel
             // 
             this.mlHivatkozasokDerSpiegel.Depth = 0;
@@ -972,17 +943,6 @@
             this.mlHivatkozasokDerSpiegel.TabIndex = 13;
             this.mlHivatkozasokDerSpiegel.Text = "Der Spiegel";
             this.mlHivatkozasokDerSpiegel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pbHivatkozasokDerSpiegel
-            // 
-            this.pbHivatkozasokDerSpiegel.Image = global::Szokartya.Properties.Resources.spiegel1;
-            this.pbHivatkozasokDerSpiegel.Location = new System.Drawing.Point(293, 283);
-            this.pbHivatkozasokDerSpiegel.Name = "pbHivatkozasokDerSpiegel";
-            this.pbHivatkozasokDerSpiegel.Size = new System.Drawing.Size(180, 180);
-            this.pbHivatkozasokDerSpiegel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbHivatkozasokDerSpiegel.TabIndex = 12;
-            this.pbHivatkozasokDerSpiegel.TabStop = false;
-            this.pbHivatkozasokDerSpiegel.Click += new System.EventHandler(this.pbHivatkozasokDerSpiegel_Click);
             // 
             // mlHivatkozasokDW
             // 
@@ -997,17 +957,6 @@
             this.mlHivatkozasokDW.Text = "Deusche Welle";
             this.mlHivatkozasokDW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbHivatkozasokDW
-            // 
-            this.pbHivatkozasokDW.Image = global::Szokartya.Properties.Resources.dw;
-            this.pbHivatkozasokDW.Location = new System.Drawing.Point(72, 283);
-            this.pbHivatkozasokDW.Name = "pbHivatkozasokDW";
-            this.pbHivatkozasokDW.Size = new System.Drawing.Size(180, 180);
-            this.pbHivatkozasokDW.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbHivatkozasokDW.TabIndex = 10;
-            this.pbHivatkozasokDW.TabStop = false;
-            this.pbHivatkozasokDW.Click += new System.EventHandler(this.pbHivatkozasokDW_Click);
-            // 
             // mlHivatkozasokTuneIn
             // 
             this.mlHivatkozasokTuneIn.Depth = 0;
@@ -1020,17 +969,6 @@
             this.mlHivatkozasokTuneIn.TabIndex = 9;
             this.mlHivatkozasokTuneIn.Text = "Tune In";
             this.mlHivatkozasokTuneIn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pbHivatkozasokTuneIn
-            // 
-            this.pbHivatkozasokTuneIn.Image = global::Szokartya.Properties.Resources.TuneIn;
-            this.pbHivatkozasokTuneIn.Location = new System.Drawing.Point(947, 41);
-            this.pbHivatkozasokTuneIn.Name = "pbHivatkozasokTuneIn";
-            this.pbHivatkozasokTuneIn.Size = new System.Drawing.Size(180, 180);
-            this.pbHivatkozasokTuneIn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbHivatkozasokTuneIn.TabIndex = 8;
-            this.pbHivatkozasokTuneIn.TabStop = false;
-            this.pbHivatkozasokTuneIn.Click += new System.EventHandler(this.pbHivatkozasokTuneIn_Click);
             // 
             // mlHivatkozasokVOALE
             // 
@@ -1045,17 +983,6 @@
             this.mlHivatkozasokVOALE.Text = "VOA Learning English";
             this.mlHivatkozasokVOALE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbHivatkozasokVOALE
-            // 
-            this.pbHivatkozasokVOALE.Image = global::Szokartya.Properties.Resources.VOALE;
-            this.pbHivatkozasokVOALE.Location = new System.Drawing.Point(724, 41);
-            this.pbHivatkozasokVOALE.Name = "pbHivatkozasokVOALE";
-            this.pbHivatkozasokVOALE.Size = new System.Drawing.Size(180, 180);
-            this.pbHivatkozasokVOALE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbHivatkozasokVOALE.TabIndex = 6;
-            this.pbHivatkozasokVOALE.TabStop = false;
-            this.pbHivatkozasokVOALE.Click += new System.EventHandler(this.pbHivatkozasokVOALE_Click);
-            // 
             // mlHivatkozasokEuronews
             // 
             this.mlHivatkozasokEuronews.Depth = 0;
@@ -1068,17 +995,6 @@
             this.mlHivatkozasokEuronews.TabIndex = 5;
             this.mlHivatkozasokEuronews.Text = "EuroNews";
             this.mlHivatkozasokEuronews.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pbHivatkozasokEuroNews
-            // 
-            this.pbHivatkozasokEuroNews.Image = global::Szokartya.Properties.Resources.euronews1;
-            this.pbHivatkozasokEuroNews.Location = new System.Drawing.Point(508, 41);
-            this.pbHivatkozasokEuroNews.Name = "pbHivatkozasokEuroNews";
-            this.pbHivatkozasokEuroNews.Size = new System.Drawing.Size(180, 180);
-            this.pbHivatkozasokEuroNews.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbHivatkozasokEuroNews.TabIndex = 4;
-            this.pbHivatkozasokEuroNews.TabStop = false;
-            this.pbHivatkozasokEuroNews.Click += new System.EventHandler(this.pbHivatkozasokEuroNews_Click);
             // 
             // mlHivatkozasokCNN
             // 
@@ -1093,17 +1009,6 @@
             this.mlHivatkozasokCNN.Text = "CNN";
             this.mlHivatkozasokCNN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbHivatkozasokCNN
-            // 
-            this.pbHivatkozasokCNN.Image = global::Szokartya.Properties.Resources.cnn;
-            this.pbHivatkozasokCNN.Location = new System.Drawing.Point(293, 41);
-            this.pbHivatkozasokCNN.Name = "pbHivatkozasokCNN";
-            this.pbHivatkozasokCNN.Size = new System.Drawing.Size(180, 180);
-            this.pbHivatkozasokCNN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbHivatkozasokCNN.TabIndex = 2;
-            this.pbHivatkozasokCNN.TabStop = false;
-            this.pbHivatkozasokCNN.Click += new System.EventHandler(this.pbHivatkozasokCNN_Click_1);
-            // 
             // mlHivatkozasokBBC
             // 
             this.mlHivatkozasokBBC.Depth = 0;
@@ -1116,17 +1021,6 @@
             this.mlHivatkozasokBBC.TabIndex = 1;
             this.mlHivatkozasokBBC.Text = "BBC";
             this.mlHivatkozasokBBC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pbHivatkozasokBBC
-            // 
-            this.pbHivatkozasokBBC.Image = global::Szokartya.Properties.Resources.bbc;
-            this.pbHivatkozasokBBC.Location = new System.Drawing.Point(72, 41);
-            this.pbHivatkozasokBBC.Name = "pbHivatkozasokBBC";
-            this.pbHivatkozasokBBC.Size = new System.Drawing.Size(180, 180);
-            this.pbHivatkozasokBBC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbHivatkozasokBBC.TabIndex = 0;
-            this.pbHivatkozasokBBC.TabStop = false;
-            this.pbHivatkozasokBBC.Click += new System.EventHandler(this.pbHivatkozasokBBC_Click);
             // 
             // tpBeallitasok
             // 
@@ -1573,7 +1467,6 @@
             // materialCard6
             // 
             this.materialCard6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard6.Controls.Add(this.materialButton4);
             this.materialCard6.Controls.Add(this.wbSegitseg);
             this.materialCard6.Depth = 0;
             this.materialCard6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1585,26 +1478,6 @@
             this.materialCard6.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard6.Size = new System.Drawing.Size(1266, 610);
             this.materialCard6.TabIndex = 2;
-            // 
-            // materialButton4
-            // 
-            this.materialButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton4.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton4.Depth = 0;
-            this.materialButton4.HighEmphasis = true;
-            this.materialButton4.Icon = null;
-            this.materialButton4.Location = new System.Drawing.Point(850, 67);
-            this.materialButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton4.Name = "materialButton4";
-            this.materialButton4.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton4.Size = new System.Drawing.Size(158, 36);
-            this.materialButton4.TabIndex = 1;
-            this.materialButton4.Text = "materialButton4";
-            this.materialButton4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton4.UseAccentColor = false;
-            this.materialButton4.UseVisualStyleBackColor = true;
-            this.materialButton4.Click += new System.EventHandler(this.materialButton4_Click);
             // 
             // wbSegitseg
             // 
@@ -1630,6 +1503,147 @@
             // 
             this.ofdSzotarDatasource.Filter = "CSV fájl (*.csv)|*.csv";
             // 
+            // materialCard7
+            // 
+            this.materialCard7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.materialCard7.Controls.Add(this.materialLabel3);
+            this.materialCard7.Depth = 0;
+            this.materialCard7.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.materialCard7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard7.Location = new System.Drawing.Point(14, 14);
+            this.materialCard7.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard7.Name = "materialCard7";
+            this.materialCard7.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard7.Size = new System.Drawing.Size(1238, 582);
+            this.materialCard7.TabIndex = 1;
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.materialLabel3.Location = new System.Drawing.Point(14, 14);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(1210, 554);
+            this.materialLabel3.TabIndex = 2;
+            this.materialLabel3.Text = "Üdvözöllek a Szókártyás nyelvtanulás programban.\r\nA bal oldali menüsávból válaszd" +
+    " ki, mit csináljunk ma.\r\n\r\nSok sikert kívánok a tanuláshoz!\r\n\r\n\r\n\r\n\r\nKészítette:" +
+    " Trankó Ida Mária\r\n";
+            // 
+            // pictureBox1pbHivatkozasokDeutschlandFM
+            // 
+            this.pictureBox1pbHivatkozasokDeutschlandFM.Image = global::Szokartya.Properties.Resources.deutschlandFm;
+            this.pictureBox1pbHivatkozasokDeutschlandFM.Location = new System.Drawing.Point(947, 283);
+            this.pictureBox1pbHivatkozasokDeutschlandFM.Name = "pictureBox1pbHivatkozasokDeutschlandFM";
+            this.pictureBox1pbHivatkozasokDeutschlandFM.Size = new System.Drawing.Size(180, 180);
+            this.pictureBox1pbHivatkozasokDeutschlandFM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1pbHivatkozasokDeutschlandFM.TabIndex = 18;
+            this.pictureBox1pbHivatkozasokDeutschlandFM.TabStop = false;
+            this.pictureBox1pbHivatkozasokDeutschlandFM.Click += new System.EventHandler(this.pictureBox1pbHivatkozasokDeutschlandFM_Click);
+            // 
+            // pictureBox1pbHivatkozasokDWradio
+            // 
+            this.pictureBox1pbHivatkozasokDWradio.Image = global::Szokartya.Properties.Resources.DWradio;
+            this.pictureBox1pbHivatkozasokDWradio.Location = new System.Drawing.Point(724, 283);
+            this.pictureBox1pbHivatkozasokDWradio.Name = "pictureBox1pbHivatkozasokDWradio";
+            this.pictureBox1pbHivatkozasokDWradio.Size = new System.Drawing.Size(180, 180);
+            this.pictureBox1pbHivatkozasokDWradio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1pbHivatkozasokDWradio.TabIndex = 16;
+            this.pictureBox1pbHivatkozasokDWradio.TabStop = false;
+            this.pictureBox1pbHivatkozasokDWradio.Click += new System.EventHandler(this.pictureBox1pbHivatkozasokDWradio_Click);
+            // 
+            // pictureBox1pbHivatkozasokDieZeit
+            // 
+            this.pictureBox1pbHivatkozasokDieZeit.Image = global::Szokartya.Properties.Resources.diezeit1;
+            this.pictureBox1pbHivatkozasokDieZeit.Location = new System.Drawing.Point(512, 283);
+            this.pictureBox1pbHivatkozasokDieZeit.Name = "pictureBox1pbHivatkozasokDieZeit";
+            this.pictureBox1pbHivatkozasokDieZeit.Size = new System.Drawing.Size(180, 180);
+            this.pictureBox1pbHivatkozasokDieZeit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1pbHivatkozasokDieZeit.TabIndex = 14;
+            this.pictureBox1pbHivatkozasokDieZeit.TabStop = false;
+            this.pictureBox1pbHivatkozasokDieZeit.Click += new System.EventHandler(this.pictureBox1pbHivatkozasokDieZeit_Click);
+            // 
+            // pbHivatkozasokDerSpiegel
+            // 
+            this.pbHivatkozasokDerSpiegel.Image = global::Szokartya.Properties.Resources.spiegel1;
+            this.pbHivatkozasokDerSpiegel.Location = new System.Drawing.Point(293, 283);
+            this.pbHivatkozasokDerSpiegel.Name = "pbHivatkozasokDerSpiegel";
+            this.pbHivatkozasokDerSpiegel.Size = new System.Drawing.Size(180, 180);
+            this.pbHivatkozasokDerSpiegel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHivatkozasokDerSpiegel.TabIndex = 12;
+            this.pbHivatkozasokDerSpiegel.TabStop = false;
+            this.pbHivatkozasokDerSpiegel.Click += new System.EventHandler(this.pbHivatkozasokDerSpiegel_Click);
+            // 
+            // pbHivatkozasokDW
+            // 
+            this.pbHivatkozasokDW.Image = global::Szokartya.Properties.Resources.dw;
+            this.pbHivatkozasokDW.Location = new System.Drawing.Point(72, 283);
+            this.pbHivatkozasokDW.Name = "pbHivatkozasokDW";
+            this.pbHivatkozasokDW.Size = new System.Drawing.Size(180, 180);
+            this.pbHivatkozasokDW.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHivatkozasokDW.TabIndex = 10;
+            this.pbHivatkozasokDW.TabStop = false;
+            this.pbHivatkozasokDW.Click += new System.EventHandler(this.pbHivatkozasokDW_Click);
+            // 
+            // pbHivatkozasokTuneIn
+            // 
+            this.pbHivatkozasokTuneIn.Image = global::Szokartya.Properties.Resources.TuneIn;
+            this.pbHivatkozasokTuneIn.Location = new System.Drawing.Point(947, 41);
+            this.pbHivatkozasokTuneIn.Name = "pbHivatkozasokTuneIn";
+            this.pbHivatkozasokTuneIn.Size = new System.Drawing.Size(180, 180);
+            this.pbHivatkozasokTuneIn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHivatkozasokTuneIn.TabIndex = 8;
+            this.pbHivatkozasokTuneIn.TabStop = false;
+            this.pbHivatkozasokTuneIn.Click += new System.EventHandler(this.pbHivatkozasokTuneIn_Click);
+            // 
+            // pbHivatkozasokVOALE
+            // 
+            this.pbHivatkozasokVOALE.Image = global::Szokartya.Properties.Resources.VOALE;
+            this.pbHivatkozasokVOALE.Location = new System.Drawing.Point(724, 41);
+            this.pbHivatkozasokVOALE.Name = "pbHivatkozasokVOALE";
+            this.pbHivatkozasokVOALE.Size = new System.Drawing.Size(180, 180);
+            this.pbHivatkozasokVOALE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHivatkozasokVOALE.TabIndex = 6;
+            this.pbHivatkozasokVOALE.TabStop = false;
+            this.pbHivatkozasokVOALE.Click += new System.EventHandler(this.pbHivatkozasokVOALE_Click);
+            // 
+            // pbHivatkozasokEuroNews
+            // 
+            this.pbHivatkozasokEuroNews.Image = global::Szokartya.Properties.Resources.euronews1;
+            this.pbHivatkozasokEuroNews.Location = new System.Drawing.Point(508, 41);
+            this.pbHivatkozasokEuroNews.Name = "pbHivatkozasokEuroNews";
+            this.pbHivatkozasokEuroNews.Size = new System.Drawing.Size(180, 180);
+            this.pbHivatkozasokEuroNews.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHivatkozasokEuroNews.TabIndex = 4;
+            this.pbHivatkozasokEuroNews.TabStop = false;
+            this.pbHivatkozasokEuroNews.Click += new System.EventHandler(this.pbHivatkozasokEuroNews_Click);
+            // 
+            // pbHivatkozasokCNN
+            // 
+            this.pbHivatkozasokCNN.Image = global::Szokartya.Properties.Resources.cnn;
+            this.pbHivatkozasokCNN.Location = new System.Drawing.Point(293, 41);
+            this.pbHivatkozasokCNN.Name = "pbHivatkozasokCNN";
+            this.pbHivatkozasokCNN.Size = new System.Drawing.Size(180, 180);
+            this.pbHivatkozasokCNN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHivatkozasokCNN.TabIndex = 2;
+            this.pbHivatkozasokCNN.TabStop = false;
+            this.pbHivatkozasokCNN.Click += new System.EventHandler(this.pbHivatkozasokCNN_Click_1);
+            // 
+            // pbHivatkozasokBBC
+            // 
+            this.pbHivatkozasokBBC.Image = global::Szokartya.Properties.Resources.bbc;
+            this.pbHivatkozasokBBC.Location = new System.Drawing.Point(72, 41);
+            this.pbHivatkozasokBBC.Name = "pbHivatkozasokBBC";
+            this.pbHivatkozasokBBC.Size = new System.Drawing.Size(180, 180);
+            this.pbHivatkozasokBBC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHivatkozasokBBC.TabIndex = 0;
+            this.pbHivatkozasokBBC.TabStop = false;
+            this.pbHivatkozasokBBC.Click += new System.EventHandler(this.pbHivatkozasokBBC_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1642,6 +1656,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Szókártya";
             this.mtcMenu.ResumeLayout(false);
+            this.tpKezdooldal.ResumeLayout(false);
             this.tpSzotar.ResumeLayout(false);
             this.materialCard4.ResumeLayout(false);
             this.materialCard4.PerformLayout();
@@ -1655,6 +1670,16 @@
             this.materialCard5.PerformLayout();
             this.tpHivatkozasok.ResumeLayout(false);
             this.mcHivatkozasok.ResumeLayout(false);
+            this.tpBeallitasok.ResumeLayout(false);
+            this.materialCard3.ResumeLayout(false);
+            this.materialCard3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbarKivalasztottSzavakSzama)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretBizonytalan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmeretlen)).EndInit();
+            this.tpSegitseg.ResumeLayout(false);
+            this.materialCard6.ResumeLayout(false);
+            this.materialCard7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1pbHivatkozasokDeutschlandFM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1pbHivatkozasokDWradio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1pbHivatkozasokDieZeit)).EndInit();
@@ -1665,16 +1690,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbHivatkozasokEuroNews)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHivatkozasokCNN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHivatkozasokBBC)).EndInit();
-            this.tpBeallitasok.ResumeLayout(false);
-            this.materialCard3.ResumeLayout(false);
-            this.materialCard3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbarKivalasztottSzavakSzama)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmert)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretBizonytalan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbarSzotanulasSzoismeretIsmeretlen)).EndInit();
-            this.tpSegitseg.ResumeLayout(false);
-            this.materialCard6.ResumeLayout(false);
-            this.materialCard6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1730,7 +1745,6 @@
         private MaterialSkin.Controls.MaterialLabel mlSzotanulasSzoismeretIsmertValue;
         private MaterialSkin.Controls.MaterialLabel mlSzotanulasSzoismeretBizonytalanValue;
         private System.Windows.Forms.WebBrowser wbSegitseg;
-        private MaterialSkin.Controls.MaterialButton materialButton4;
         private MaterialSkin.Controls.MaterialCard materialCard6;
         private MaterialSkin.Controls.MaterialCard mcHivatkozasok;
         private System.Windows.Forms.PictureBox pbHivatkozasokBBC;
@@ -1774,6 +1788,8 @@
         private MaterialSkin.Controls.MaterialLabel mlSzotanulasProgress;
         private MaterialSkin.Controls.MaterialLabel mlSzotanulasSzoSuly;
         private System.Windows.Forms.Panel panelSzotanulasBetuzve;
+        private MaterialSkin.Controls.MaterialCard materialCard7;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
     }
 }
 

@@ -7,7 +7,8 @@ using CsvHelper.Configuration.Attributes;
 
 namespace Szokartya
 {
-    internal class SzotarRekord
+    //internal class SzotarRekord
+    public class SzotarRekord
     {
         [Index(0)]
         public string Anyanyelv { get; set; } = String.Empty;

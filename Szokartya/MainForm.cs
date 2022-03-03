@@ -62,9 +62,7 @@ namespace Szokartya
                 HasHeaderRecord = true,
             };
 
-            //
-            // Beállítások beolvasása
-            //
+            #region Beállítások beolvasása
             mtbSzotarDatasource.Text = GetConfig("szotarDatasource");
             szotarDatasource = GetConfig("szotarDatasource");
             
@@ -87,18 +85,26 @@ namespace Szokartya
             mlSzotanulasSzoismeretIsmeretlenMaxValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
             mlSzotanulasSzoismeretBizonytalanMaxValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
             mlSzotanulasSzoismeretIsmertMaxValue.Text = Convert.ToString(tbarKivalasztottSzavakSzama.Value);
+            #endregion
 
             //
             //
             //
-            mtcMenu.SelectedIndex = 1;
+            
+
+            // CODE-001
+            //string text = System.IO.File.ReadAllText(@"C:\Users\trank\source\repos\szokartya\Szokartya\README.md");
+            string text = Encoding.UTF8.GetString(Properties.Resources.README);
+            string mdHtml = Markdig.Markdown.ToHtml(text);
+            wbSegitseg.DocumentText = mdHtml;
             //
             //
             //
 
 
-
+            //
             // Themes
+            //
             var allowedThemeColors = GetConfig("allowedThemeColors").Split(',');
             foreach (string allowedThemeColor in allowedThemeColors)
             {
@@ -109,7 +115,6 @@ namespace Szokartya
             {
                 mcbThemeAccentColor.Items.Add(allowedThemeAccentColor);
             }
-            // Theme
             mswThemeDarkMode.Checked = Convert.ToBoolean(GetConfig("themeDarkMode"));
             mcbThemeColor.SelectedItem = GetConfig("themeColor");
             mcbThemeColor.MaxDropDownItems = 100;
@@ -148,6 +153,9 @@ namespace Szokartya
             //
             //
             //
+
+            mtcMenu.SelectedIndex = 5;
+
         }
 
         public static void SetConfig(string key, string value)
@@ -331,8 +339,8 @@ namespace Szokartya
             for (int i = szotar.Count - 1; i > 0; i--)
             {
                 var row = new ListViewItem(new[] {
-                    UppercaseFirst(szotar[i].Anyanyelv),
-                    UppercaseFirst(szotar[i].Idegennyelv),
+                    SzokartyaHelper.UppercaseFirst(szotar[i].Anyanyelv),
+                    SzokartyaHelper.UppercaseFirst(szotar[i].Idegennyelv),
                     Convert.ToString(szotar[i].Suly)
                 });
                 mlvSzotar.Items.Add(row);
@@ -340,8 +348,8 @@ namespace Szokartya
             //foreach (SzotarRekord item in szotar)
             //{
             //    var row = new ListViewItem(new[] {
-            //        UppercaseFirst(item.Anyanyelv),
-            //        UppercaseFirst(item.Idegennyelv),
+            //        SzotarHelper.UppercaseFirst(item.Anyanyelv),
+            //        SzotarHelper.UppercaseFirst(item.Idegennyelv),
             //        Convert.ToString(item.Suly)
             //    });
             //    mlvSzotar.Items.Add(row);
@@ -352,16 +360,6 @@ namespace Szokartya
         private void SetLastColumnWidthSzotar()
         {
             mlvSzotar.Columns[mlvSzotar.Columns.Count - 1].Width = -2;
-        }
-
-        private string UppercaseFirst(string str)
-        {
-            if (string.IsNullOrEmpty(str))
-            {
-                return string.Empty;
-            }
-
-            return char.ToUpper(str[0]) + str.Substring(1).ToLower();
         }
 
         private void mtbSzotarSuly_KeyPress(object sender, KeyPressEventArgs e)
@@ -435,6 +433,7 @@ namespace Szokartya
             MaterialSnackBar SnackBarMessage = new MaterialSnackBar(message, 5000, "OK", false);
             SnackBarMessage.Show(this);
         }
+        
         private DialogResult ShowMaterialDialogOK(String title, String message)
         {
             MaterialDialog materialDialog = new MaterialDialog(this, title, message, "OK");
@@ -456,7 +455,7 @@ namespace Szokartya
         {
             if (szotarSelectedItemIndex >= 0)
             {
-                szotar.RemoveAt(szotarSelectedItemIndex);
+                szotar.RemoveAt((szotar.Count() - 1) - szotarSelectedItemIndex);
             }
             ClearSzotarInputFields();
             EnableSzotarInputFields(false);
@@ -841,7 +840,7 @@ namespace Szokartya
         private void FillSzotanulasControls()
         {
             mlSzotanulasProgress.Text = Convert.ToString(kivalasztottSzavakIndex + 1) + "/" + Convert.ToString(kivalasztottSzavak.Count);
-            mlSzotanulasSzoIdegen.Text = UppercaseFirst(kivalasztottSzavak[kivalasztottSzavakIndex].Idegennyelv);
+            mlSzotanulasSzoIdegen.Text = SzokartyaHelper.UppercaseFirst(kivalasztottSzavak[kivalasztottSzavakIndex].Idegennyelv);
             mlSzotanulasSzoSuly.Text = kivalasztottSzavak[kivalasztottSzavakIndex].Suly.ToString();
         }
 
@@ -869,7 +868,7 @@ namespace Szokartya
                     }
                     else
                     {
-                        mlSzotanulasSzoAnyanyelv.Text = UppercaseFirst(kivalasztottSzavak[kivalasztottSzavakIndex].Anyanyelv);
+                        mlSzotanulasSzoAnyanyelv.Text = SzokartyaHelper.UppercaseFirst(kivalasztottSzavak[kivalasztottSzavakIndex].Anyanyelv);
                         megoldasMutatva = true;
                     }
                 }
@@ -1009,6 +1008,11 @@ namespace Szokartya
         private void mbtnSzotanulasEddigiEredmenyekMentese_Click(object sender, EventArgs e)
         {
             TanultSzavakMenteseASzotarba();
+        }
+
+        private void materialTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

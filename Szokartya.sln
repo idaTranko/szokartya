@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Szokartya", "Szokartya\Szokartya.csproj", "{51ACC397-41A8-4B99-91F7-0D400C6AC0C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestSzokartya", "UnitTestSzokartya\UnitTestSzokartya.csproj", "{FD0D991A-7BF0-4C85-AB08-7BECE2211FEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{51ACC397-41A8-4B99-91F7-0D400C6AC0C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51ACC397-41A8-4B99-91F7-0D400C6AC0C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51ACC397-41A8-4B99-91F7-0D400C6AC0C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD0D991A-7BF0-4C85-AB08-7BECE2211FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0D991A-7BF0-4C85-AB08-7BECE2211FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD0D991A-7BF0-4C85-AB08-7BECE2211FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD0D991A-7BF0-4C85-AB08-7BECE2211FEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

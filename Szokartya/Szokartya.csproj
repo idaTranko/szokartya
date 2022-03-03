@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SzokartyaHelper.cs" />
     <Compile Include="SzotarRekordMap.cs" />
     <Compile Include="SzotarRekord.cs" />
     <Compile Include="MainForm.cs">
